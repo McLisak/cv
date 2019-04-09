@@ -1,0 +1,21 @@
+body {
+  background: #1a1a1a;
+}
+
+::-webkit-input-placeholder {
+  color: red;
+}
+
+:-ms-input-placeholder {
+  color: red;
+}
+
+::-ms-input-placeholder {
+  color: red;
+}
+
+::placeholder {
+  color: red;
+}
+
+/*# sourceMappingURL=/src.80ee2152.css.map */

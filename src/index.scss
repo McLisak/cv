@@ -1,0 +1,6 @@
+body {
+  background: lighten(black, 10);
+}
+::placeholder {
+  color: red;
+}

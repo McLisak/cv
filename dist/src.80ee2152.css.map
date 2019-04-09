@@ -1,0 +1,1 @@
+{"version":3,"sources":["index.scss"],"names":[],"mappings":"AAAA;EACE,mBAAA;;;AAEF;EACE,UAAA;;;AADF;EACE,UAAA;;;AADF;EACE,UAAA;;;AADF;EACE,UAAA","file":"src.80ee2152.css","sourceRoot":"../src","sourcesContent":["body {\n  background: lighten(black, 10);\n}\n::placeholder {\n  color: red;\n}\n"]}
