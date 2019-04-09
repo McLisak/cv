@@ -19,7 +19,9 @@
   "homepage": "https://github.com/McLisak/cv#readme",
   "devDependencies": {
     "autoprefixer": "^9.5.1",
+    "eslint": "^5.16.0",
     "parcel": "^1.12.3",
-    "sass": "^1.18.0"
+    "sass": "^1.18.0",
+    "scrollmagic": "^2.0.6"
   }
 }
