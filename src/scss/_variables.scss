@@ -1,0 +1,22 @@
+:root {
+  --color-bg: #16353d;
+  --color-primary: #ab601b;
+
+  --grid-item-width: 360px;
+}
+
+$outer-shadow: 3px 3px 6px rgba(black, 0.4), 5px 5px 15px rgba(black, 0.2),
+  -3px -3px 6px rgba(whitesmoke, 0.1), -5px -5px 15px rgba(whitesmoke, 0.05);
+
+@mixin outer-shadow {
+  box-shadow: $outer-shadow;
+}
+$inset-shadow: inset 3px 3px 6px rgba(black, 0.4), inset 5px 5px 15px rgba(black, 0.2),
+  inset -3px -3px 6px rgba(whitesmoke, 0.1), inset -5px -5px 15px rgba(whitesmoke, 0.05);
+@mixin inset-shadow {
+  box-shadow: $inset-shadow;
+}
+
+@mixin frame-shadow {
+  box-shadow: $outer-shadow, $inset-shadow;
+}

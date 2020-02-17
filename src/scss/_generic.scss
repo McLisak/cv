@@ -1,19 +1,51 @@
-body {
-  margin: 0;
-  padding: 0;
-}
-body * {
+@import url('https://fonts.googleapis.com/css?family=Lato:300,400,900&display=swap&subset=latin-ext');
+
+* {
   box-sizing: border-box;
 }
 
-#wrapper {
-  position: relative;
-  width: 100vw;
-  height: 100vh;
+body {
+  font-family: 'Lato', Helvetica, Arial, sans-serif;
+  color: whitesmoke;
+  margin: 0;
+  padding: 0;
+  background: var(--color-bg);
 }
 
-section {
+#wrapper {
   width: 100%;
-  height: 100%;
-  background: linear-gradient(to top right, #2e2e2e, #6d6d6d);
+  position: relative;
+  padding: 15px;
+  z-index: 1;
+  display: grid;
+  grid-gap: 20px;
+}
+
+/* CONTAINER VARIANTS */
+.pulled {
+  position: relative;
+  display: flex;
+  width: var(--grid-item-width);
+  height: var(--grid-item-width);
+  border-radius: 10px;
+  @include outer-shadow;
+}
+.pushed {
+  position: relative;
+  display: flex;
+  width: var(--grid-item-width);
+  height: var(--grid-item-width);
+  border-radius: 10px;
+  @include inset-shadow;
+}
+.frame {
+  position: relative;
+  display: flex;
+  z-index: 1;
+  background: var(--color-bg);
+  width: var(--grid-item-width);
+  height: var(--grid-item-width);
+  border-radius: 5px;
+  border: 20px solid var(--color-bg);
+  @include frame-shadow;
 }

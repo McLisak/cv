@@ -1,1 +1,0 @@
-{"version":3,"sources":["index.js"],"names":["Page","window","page"],"mappings":";;IAAMA,OACJ,gBAAc;AAAA;AAAE;;AAGlBC,MAAM,CAACC,IAAP,GAAc,IAAIF,IAAJ,EAAd","file":"src.e31bb0bc.js","sourceRoot":"../src","sourcesContent":["class Page {\n  constructor() {}\n}\n\nwindow.page = new Page();\n"]}
