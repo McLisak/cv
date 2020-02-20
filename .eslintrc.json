@@ -8,7 +8,6 @@
     "ecmaFeatures": { "modules": true }
   },
   "rules": {
-    "prettier/prettier": "error",
-    "quotes": [2, "single"]
+    "prettier/prettier": "error"
   }
 }

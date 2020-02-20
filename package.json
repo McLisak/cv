@@ -23,11 +23,13 @@
     "eslint-config-prettier": "^6.10.0",
     "eslint-plugin-prettier": "^3.1.2",
     "parcel": "^1.12.4",
+    "prettier": "^1.19.1",
     "sass": "^1.25.0",
     "scrollmagic": "^2.0.7"
   },
   "dependencies": {
+    "animejs": "^3.1.0",
     "babel-eslint": "^10.0.3",
-    "gsap": "^3.1.1"
+    "ie-buster": "git+https://github.com/McLisak/ie-buster.git"
   }
 }

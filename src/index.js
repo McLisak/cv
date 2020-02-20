@@ -1,5 +1,6 @@
-import { TweenMax } from 'gsap';
+import anime from 'animejs';
 import ScrollMagic from 'scrollmagic';
+import { IEBuster } from 'ie-buster';
 
 class Page {
   constructor() {
@@ -7,4 +8,7 @@ class Page {
   }
 }
 
+if (IEBuster()) {
+  return;
+}
 window.page = new Page();
