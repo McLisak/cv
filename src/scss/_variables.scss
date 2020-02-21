@@ -15,6 +15,16 @@ $inset-shadow: inset 3px 3px 6px rgba(black, 0.4), inset 6px 6px 15px rgba(black
   box-shadow: $outer-shadow, $inset-shadow;
 }
 
+@mixin text-shadow($elevation: 1, $color: rgba(black, 0.6)) {
+  @if $elevation == 1 {
+    text-shadow: 1px 2px 2px $color;
+  } @else if $elevation == 2 {
+    text-shadow: 1px 2px 2px $color, 2px 3px 5px lighten($color, 20%);
+  } @else if $elevation == 3 {
+    text-shadow: 1px 2px 2px $color, 2px 3px 5px lighten($color, 10%), 3px 5px 10px lighten($color, 20%);
+  }
+}
+
 :root {
   --color-bg: #062230;
   --color-primary: #ab601b;

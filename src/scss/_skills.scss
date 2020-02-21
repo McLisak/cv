@@ -1,0 +1,59 @@
+.skills {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  width: 100%;
+}
+.skill {
+  --size: 240px;
+  position: relative;
+  font-weight: 700;
+  font-size: calc(var(--size) / 3);
+  &:after {
+    position: absolute;
+    right: 10%;
+    bottom: 10%;
+    font-size: 100%;
+    line-height: 1;
+    @include text-shadow(3);
+  }
+  &-js {
+    background: linear-gradient(top left, hsl(60, 86%, 43%), hsl(60, 93%, 25%));
+    &:after {
+      content: 'JS';
+    }
+  }
+  &-ts {
+    background: linear-gradient(top left, hsl(215, 60%, 35%), hsl(215, 60%, 20%));
+    &:after {
+      content: 'TS';
+    }
+  }
+  &-css {
+    background: linear-gradient(top left, hsl(192, 86%, 43%), hsl(192, 86%, 25%));
+    &:after {
+      content: 'CSS';
+    }
+  }
+  &-scss {
+    background: linear-gradient(top left, hsl(330, 86%, 43%), hsl(330, 86%, 25%));
+    &:after {
+      font-size: 80%;
+      content: 'SCSS';
+    }
+  }
+  &-webpack {
+    background: linear-gradient(top left, hsl(206, 68%, 43%), hsl(206, 68%, 25%));
+    &:after {
+      font-size: 50%;
+      content: 'webpack';
+    }
+  }
+  &-aws {
+    background: linear-gradient(top left, hsl(35, 94%, 53%), hsl(35, 94%, 38%));
+    &:after {
+      font-size: 90%;
+      content: 'AWS';
+    }
+  }
+}
