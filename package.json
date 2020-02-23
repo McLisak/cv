@@ -4,7 +4,8 @@
   "description": "Different way of presenting CV.",
   "main": "index.js",
   "scripts": {
-    "start": "parcel ./src/index.html -p 8080"
+    "start": "parcel ./src/index.html -p 8080",
+    "build": "rm -rf ./dist && parcel build ./src/index.html"
   },
   "repository": {
     "type": "git",
@@ -31,6 +32,8 @@
   "dependencies": {
     "animejs": "^3.1.0",
     "babel-eslint": "^10.0.3",
-    "ie-buster": "git+https://github.com/McLisak/ie-buster.git"
+    "ie-buster": "git+https://github.com/McLisak/ie-buster.git",
+    "scroll-into-view-if-needed": "^2.2.24",
+    "smooth-scroll-into-view-if-needed": "^1.1.27"
   }
 }

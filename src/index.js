@@ -1,14 +1,21 @@
+import { IEBuster } from 'ie-buster';
 import anime from 'animejs';
 import ScrollMagic from 'scrollmagic';
-import { IEBuster } from 'ie-buster';
+import 'scrollmagic/scrollmagic/uncompressed/plugins/debug.addIndicators';
+import { Nav } from './js/nav';
 
 class Page {
   constructor() {
-    this.scrollMagic = new ScrollMagic.Controller();
+    /* this.scrollController = new ScrollMagic.Controller({
+      globalSceneOptions: {
+        duration: 500
+      }
+    });
+    this.scrollScene = new ScrollMagic.Scene().addTo(this.scrollController).addIndicators(); */
+    this.nav = new Nav();
   }
 }
 
-if (IEBuster()) {
-  return;
+if (!IEBuster()) {
+  window.page = new Page();
 }
-window.page = new Page();

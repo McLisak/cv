@@ -3,29 +3,34 @@
 * {
   box-sizing: border-box;
 }
-
+html {
+  scroll-behavior: smooth;
+}
 body {
   font-family: 'Lato', Helvetica, Arial, sans-serif;
   color: whitesmoke;
   margin: 0;
-  padding: 0;
-  background: var(--color-bg);
+  background: $color-bg;
   position: relative;
   width: 100%;
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  line-height: 1.1;
+  padding-bottom: 50px;
 }
 
-#wrapper {
+section {
   position: relative;
   width: 100%;
-  padding: 15px;
-  z-index: 1;
+  min-height: 70vh;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  align-content: center;
+  border: 1px solid white;
 }
-
 /* CONTAINER VARIANTS */
 .cont {
   --size: 300px;

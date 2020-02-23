@@ -1,11 +1,11 @@
-$outer-shadow: 3px 3px 6px rgba(black, 0.4), 6px 6px 15px rgba(black, 0.2),
-  -3px -3px 6px rgba(whitesmoke, 0.07), -6px -6px 15px rgba(whitesmoke, 0.03);
+$outer-shadow: 3px 3px 6px rgba(black, 0.4), 5px 5px 6px rgba(black, 0.2),
+  -3px -3px 6px rgba(whitesmoke, 0.07), -5px -5px 6px rgba(whitesmoke, 0.03);
 
 @mixin outer-shadow {
   box-shadow: $outer-shadow;
 }
-$inset-shadow: inset 3px 3px 6px rgba(black, 0.4), inset 6px 6px 15px rgba(black, 0.2),
-  inset -3px -3px 6px rgba(whitesmoke, 0.07), inset -6px -6px 15px rgba(whitesmoke, 0.03);
+$inset-shadow: inset 3px 3px 6px rgba(black, 0.4), inset 5px 5px 6px rgba(black, 0.2),
+  inset -3px -3px 6px rgba(whitesmoke, 0.07), inset -5px -5px 6px rgba(whitesmoke, 0.03);
 
 @mixin inset-shadow {
   box-shadow: $inset-shadow;
@@ -25,10 +25,5 @@ $inset-shadow: inset 3px 3px 6px rgba(black, 0.4), inset 6px 6px 15px rgba(black
   }
 }
 
-:root {
-  --color-bg: #062230;
-  --color-primary: #ab601b;
-}
-
-$color-bg: var(--color-bg);
-$color-primary: var(--color-primary);
+$color-bg: #062230;
+$color-primary: #c76e1b;
