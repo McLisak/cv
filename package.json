@@ -33,7 +33,6 @@
     "animejs": "^3.1.0",
     "babel-eslint": "^10.0.3",
     "ie-buster": "git+https://github.com/McLisak/ie-buster.git",
-    "scroll-into-view-if-needed": "^2.2.24",
     "smooth-scroll-into-view-if-needed": "^1.1.27"
   }
 }

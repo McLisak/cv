@@ -3,14 +3,12 @@
 * {
   box-sizing: border-box;
 }
-html {
-  scroll-behavior: smooth;
-}
 body {
   font-family: 'Lato', Helvetica, Arial, sans-serif;
   color: whitesmoke;
   margin: 0;
   background: $color-bg;
+  // background: red;
   position: relative;
   width: 100%;
   display: flex;
@@ -18,17 +16,18 @@ body {
   justify-content: center;
   align-items: center;
   line-height: 1.1;
-  padding-bottom: 50px;
+  padding: 15px 15px 55px 15px;
 }
 
 section {
   position: relative;
   width: 100%;
-  min-height: 70vh;
+  min-height: 120vh;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   align-content: center;
+  align-items: center;
   border: 1px solid white;
 }
 /* CONTAINER VARIANTS */
@@ -131,7 +130,7 @@ section {
 
 .frame {
   z-index: 1;
-  background: $color-bg;
+  background: inherit;
   border: 20px solid $color-bg;
   @include frame-shadow;
 }

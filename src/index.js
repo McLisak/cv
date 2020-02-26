@@ -1,6 +1,5 @@
 import { IEBuster } from 'ie-buster';
 import anime from 'animejs';
-import ScrollMagic from 'scrollmagic';
 import 'scrollmagic/scrollmagic/uncompressed/plugins/debug.addIndicators';
 import { Nav } from './js/nav';
 

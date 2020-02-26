@@ -4,7 +4,7 @@
   bottom: 0;
   left: 0;
   width: 100%;
-  height: 50px;
+  height: 55px;
 
   display: flex;
   justify-content: center;
@@ -33,31 +33,31 @@
       white-space: nowrap;
       padding: 0 12.5px;
       line-height: 1;
-      &:before,
-      &:after {
+      cursor: pointer;
+      &:before {
         content: '';
         position: absolute;
         display: block;
         bottom: 0;
-        width: 51%;
+        width: 100%;
         height: 5px;
         background: $color-primary;
-        transform: scaleX(0);
+        transform: translateY(0) scale(0, 1);
         transition: transform 300ms cubic-bezier(0.075, 0.82, 0.165, 1);
       }
       &:before {
-        transform-origin: 100% 50%;
+        transform-origin: 50% 50%;
         left: 0;
       }
-      &:after {
-        transform-origin: 0% 50%;
-        right: 0;
+      &.hover {
+        &:before {
+          transform: translateY(-100%) scale(1, 0.7);
+        }
       }
-    }
-    li.active {
-      &:before,
-      &:after {
-        transform: scaleX(1);
+      &.active {
+        &:before {
+          transform: translateY(0) scale(1, 1);
+        }
       }
     }
   }
