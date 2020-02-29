@@ -15,7 +15,7 @@
     scroll-snap-type: x mandatory;
     -webkit-overflow-scrolling: touch;
     padding: 20px 10px 15px 10px;
-    @include inner-shadow();
+    @include inset-shadow();
   }
   .slide {
     position: relative;
@@ -71,7 +71,7 @@
 }
 .slides::-webkit-scrollbar-thumb {
   width: 10px;
-  background: rgba(black, 0.33);
+  background: rgba(white, 0.33);
   border-radius: 5px;
 }
 .slides::-webkit-scrollbar-track {

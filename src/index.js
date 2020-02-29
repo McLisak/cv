@@ -2,7 +2,7 @@ import { IEBuster } from 'ie-buster';
 import anime from 'animejs';
 import 'scrollmagic/scrollmagic/uncompressed/plugins/debug.addIndicators';
 import { Nav } from './js/nav';
-import { Sliders } from './js/sliders';
+import { Sliders } from './js/slider/sliders';
 
 class Page {
   constructor() {
