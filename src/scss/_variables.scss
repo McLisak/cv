@@ -42,6 +42,8 @@ $inner-shadow: inset 3px 3px 6px rgba(black, 0.4), inset 5px 5px 6px rgba(black,
   }
 }
 
+$cubic-out-cubic: cubic-bezier(0.215, 0.61, 0.355, 1);
+
 :root {
   --color-bg: #062d30;
   --color-primary: #c56a15;
