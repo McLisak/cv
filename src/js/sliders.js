@@ -62,21 +62,26 @@ export class Sliders {
       scrollMode: 'always',
       inline: 'center',
       block: 'nearest',
-      duration: 30,
     };
     const prevClick = () => {
       let prevIndex = slider.Slider.slides.indexOf(slider.Slider.activeSlide) - 1;
       if (prevIndex < 0) {
         prevIndex = 0;
       }
-      scrollIntoView(slider.Slider.slides[prevIndex], scrollOptions);
+      slider.Slider.slidesContainer.style.scrollSnapType = 'none';
+      scrollIntoView(slider.Slider.slides[prevIndex], scrollOptions).then(() => {
+        slider.Slider.slidesContainer.style.scrollSnapType = '';
+      });
     };
     const nextClick = () => {
       let nextIndex = slider.Slider.slides.indexOf(slider.Slider.activeSlide) + 1;
       if (nextIndex >= slider.Slider.slides.length - 1) {
         nextIndex = slider.Slider.slides.length - 1;
       }
-      scrollIntoView(slider.Slider.slides[nextIndex], scrollOptions);
+      slider.Slider.slidesContainer.style.scrollSnapType = 'none';
+      scrollIntoView(slider.Slider.slides[nextIndex], scrollOptions).then(() => {
+        slider.Slider.slidesContainer.style.scrollSnapType = '';
+      });
     };
     slider.Slider.controls.prev.addEventListener('click', prevClick);
     slider.Slider.controls.next.addEventListener('click', nextClick);

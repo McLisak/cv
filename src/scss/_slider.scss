@@ -1,20 +1,19 @@
 .slider {
   position: relative;
+  max-width: 600px;
   width: 100%;
   height: 500px;
   max-height: 80vh;
   display: flex;
   align-content: stretch;
-  // background: var(--color-bg);
-
   .slides {
     display: block;
     white-space: nowrap;
     overflow-y: hidden;
     overflow-x: scroll;
+    scroll-snap-stop: always;
     scroll-snap-type: x mandatory;
     -webkit-overflow-scrolling: touch;
-    scroll-behavior: smooth;
     padding: 20px 10px 15px 10px;
     @include inner-shadow();
   }
@@ -40,8 +39,9 @@
     height: var(--size);
     border-radius: 50%;
     background: var(--color-bg);
-    @include elevation(3);
     cursor: pointer;
+
+    @include elevation(3);
 
     transform: scale(1);
     transition: transform 300ms $cubic-out-cubic, background 300ms $cubic-out-cubic cub;

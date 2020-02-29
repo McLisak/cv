@@ -16,11 +16,11 @@ export class Nav {
 
     this._debouncedNavScroll = debounce(($item) => {
       scrollIntoView($item, {
-        scrollMode: 'if-needed',
+        scrollMode: 'always',
         behavior: 'smooth',
         inline: 'center',
         boundary: this.$list,
-        duration: 100,
+        duration: 200,
       });
     }, 300);
 
