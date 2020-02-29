@@ -1,0 +1,30 @@
+.avatar-container {
+  --size: 190px;
+  padding-top: calc(var(--size) / 2);
+  display: flex;
+  justify-content: center;
+  min-height: 75vh;
+}
+
+.avatar {
+  position: sticky;
+  top: 33%;
+  width: var(--size);
+  height: var(--size);
+  border-width: 15px;
+  overflow: visible;
+  z-index: 1;
+  background-image: url(./assets/avatar-bg.jpg);
+  background-size: var(--size);
+  background-position: bottom center;
+  margin: 0 10px;
+
+  img {
+    width: var(--size);
+    height: auto;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}

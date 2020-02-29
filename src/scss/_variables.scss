@@ -4,26 +4,45 @@ $outer-shadow: 3px 3px 6px rgba(black, 0.4), 5px 5px 6px rgba(black, 0.2),
 @mixin outer-shadow {
   box-shadow: $outer-shadow;
 }
-$inset-shadow: inset 3px 3px 6px rgba(black, 0.4), inset 5px 5px 6px rgba(black, 0.2),
+$inner-shadow: inset 3px 3px 6px rgba(black, 0.4), inset 5px 5px 6px rgba(black, 0.2),
   inset -3px -3px 6px rgba(whitesmoke, 0.07), inset -5px -5px 6px rgba(whitesmoke, 0.03);
 
-@mixin inset-shadow {
-  box-shadow: $inset-shadow;
+@mixin inner-shadow {
+  box-shadow: $inner-shadow;
 }
 
 @mixin frame-shadow {
-  box-shadow: $outer-shadow, $inset-shadow;
+  box-shadow: $outer-shadow, $inner-shadow;
 }
 
-@mixin text-shadow($elevation: 1, $color: rgba(black, 0.6)) {
-  @if $elevation == 1 {
-    text-shadow: 1px 2px 2px $color;
-  } @else if $elevation == 2 {
-    text-shadow: 1px 2px 2px $color, 2px 3px 5px lighten($color, 20%);
-  } @else if $elevation == 3 {
-    text-shadow: 1px 2px 2px $color, 2px 3px 5px lighten($color, 10%), 3px 5px 10px lighten($color, 20%);
+@mixin elevation($level: 1) {
+  @if $level == 1 {
+    box-shadow: 3px 1px 3px rgba(0, 0, 0, 0.12), 3px 1px 2px rgba(0, 0, 0, 0.24);
+  } @else if $level == 2 {
+    box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.16), 3px 3px 6px rgba(0, 0, 0, 0.23);
+  } @else if $level == 3 {
+    box-shadow: 3px 10px 20px rgba(0, 0, 0, 0.19), 3px 6px 6px rgba(0, 0, 0, 0.23);
+  } @else if $level == 4 {
+    box-shadow: 3px 14px 28px rgba(0, 0, 0, 0.25), 3px 10px 10px rgba(0, 0, 0, 0.22);
+  } @else if $level == 5 {
+    box-shadow: 3px 19px 38px rgba(0, 0, 0, 0.3), 3px 15px 12px rgba(0, 0, 0, 0.22);
   }
 }
 
-$color-bg: #062230;
-$color-primary: #c76e1b;
+@mixin text-shadow($elevation: 1, $dark-color: rgba(black, 0.6)) {
+  @if $elevation == 1 {
+    text-shadow: 1px 2px 2px $dark-color;
+  } @else if $elevation == 0 {
+    text-shadow: 1px 1px 1px $dark-color;
+  } @else if $elevation == 2 {
+    text-shadow: 1px 2px 2px $dark-color, 2px 3px 5px lighten($dark-color, 20%);
+  } @else if $elevation == 3 {
+    text-shadow: 1px 2px 2px $dark-color, 2px 3px 5px lighten($dark-color, 10%),
+      3px 5px 10px lighten($dark-color, 20%);
+  }
+}
+
+:root {
+  --color-bg: #062d30;
+  --color-primary: #c56a15;
+}
