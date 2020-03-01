@@ -8,6 +8,7 @@ export const CONTROL_NEXT_CLASS = 'next';
 
 export class Slider {
   constructor(container) {
+    this.id = container.id;
     this.container = container;
     this.slidesContainer = container.getElementsByClassName(SLIDES_CONTAINER_CLASS)[0];
     this.slides = Array.from(container.getElementsByClassName(SLIDE_CLASS));

@@ -18,13 +18,18 @@
   }
   .slide {
     position: relative;
-    display: inline-block;
+    display: inline-flex;
+    flex-direction: column;
+    justify-content: space-between;
+    vertical-align: middle;
     width: 400px;
     max-width: calc(100% - 50px);
     height: 100%;
     scroll-snap-stop: always;
     scroll-snap-align: center;
+    white-space: normal;
     margin: 0 10px;
+    padding: 5px 10px;
     @include outer-shadow();
   }
   .slider-control {

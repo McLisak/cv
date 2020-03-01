@@ -1,10 +1,10 @@
-@import url('https://fonts.googleapis.com/css?family=Quicksand:300,400,600,700&display=swap&subset=latin-ext');
+@import url('https://fonts.googleapis.com/css?family=Poppins:300,400,600,700&display=swap');
 
 * {
   box-sizing: border-box;
 }
 body {
-  font-family: 'Quicksand', Helvetica, Arial, sans-serif;
+  font-family: 'Poppins', Helvetica, Arial, sans-serif;
   color: whitesmoke;
   margin: 0;
   background: var(--color-bg);
@@ -31,13 +31,30 @@ section {
   align-items: center;
 }
 
+h1,
+h2,
+h3,
+h4 {
+  font-weight: 700;
+  text-align: center;
+}
 h1 {
   font-size: 3rem;
 }
 h2 {
   font-size: 2.4rem;
 }
-h2 {
-  font-weight: 700;
-  text-align: center;
+h3 {
+  font-weight: 300;
+  font-size: 2rem;
+}
+
+.row {
+  display: flex;
+  flex: 0 0 auto;
+  flex-wrap: wrap;
+}
+.center {
+  justify-content: center;
+  align-items: center;
 }

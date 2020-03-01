@@ -16,7 +16,7 @@ export class Sliders {
 
   _createSliders(sliders) {
     sliders.forEach((slider) => {
-      slider.Slider = new Slider(slider);
+      slider.slider = new Slider(slider);
     });
   }
 }
