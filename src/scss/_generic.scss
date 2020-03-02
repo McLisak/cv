@@ -58,3 +58,21 @@ h3 {
   justify-content: center;
   align-items: center;
 }
+
+button {
+  background: var(--color-bg);
+  @include outer-shadow;
+  border: none;
+  padding: 1em;
+  cursor: pointer;
+  color: white;
+  font-family: inherit;
+  margin: 10px 5px;
+  text-transform: uppercase;
+}
+.container {
+  max-width: 1000px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}

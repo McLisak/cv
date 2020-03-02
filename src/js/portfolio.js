@@ -3,7 +3,7 @@ import portfolioData from '../data/portfolio';
 const renderSkills = (skills) => {
   let result = '';
   skills.forEach((skillName) => {
-    result += `<div class="cont skill skill-mini skill-${skillName}"></div>`;
+    result += `<div class="box skill skill-mini skill-${skillName}"></div>`;
   });
   return result;
 };
@@ -28,9 +28,10 @@ export const renderPortfolio = (container) => {
   Object.values(portfolioData).forEach((project) => {
     projectsHtmls += renderProject(project);
   });
-  container.innerHTML = `
+  const portfolioHTML = `
   <div class="slides">
     ${projectsHtmls}
   </div>
   `;
+  container.innerHTML = portfolioHTML;
 };
