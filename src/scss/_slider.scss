@@ -15,20 +15,30 @@
     -webkit-overflow-scrolling: touch;
     padding: 20px 10px 15px 10px;
     @include inset-shadow();
+    &:before,
+    &:after {
+      content: '';
+    }
   }
   .slide {
+    &:first-child {
+      margin-left: 10%;
+    }
+    &:last-child {
+      margin-right: 10%;
+    }
     position: relative;
     display: inline-flex;
     flex-direction: column;
     justify-content: space-between;
     vertical-align: middle;
-    width: 600px;
+    width: 90%;
     max-width: calc(100% - 50px);
     height: 100%;
-    // scroll-snap-stop: always;
+    scroll-snap-stop: always;
     scroll-snap-align: center;
     white-space: normal;
-    margin: 0 10px;
+    margin: 0 2.5%;
     padding: 5px 10px;
     @include outer-shadow();
   }
@@ -71,7 +81,7 @@
     }
   }
 
-  &-fullscreen{
+  &-fullscreen {
     height: 90vh;
     max-height: 90vh;
   }

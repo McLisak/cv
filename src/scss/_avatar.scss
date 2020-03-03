@@ -3,12 +3,12 @@
   padding-top: calc(var(--size) / 2);
   display: flex;
   justify-content: center;
-  min-height: 75vh;
+  min-height: 66vh;
 }
 
 .avatar {
   position: sticky;
-  top: 33%;
+  top: 25%;
   width: var(--size);
   height: var(--size);
   border-width: 15px;

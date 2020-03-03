@@ -33,7 +33,7 @@ export class Lightbox {
     const button = document.createElement('button');
     button.classList.add('lightbox-close');
     button.addEventListener('click', this.close.bind(this));
-    container.prepend(button);
+    container.append(button);
   }
 
   _addKeyboardClose() {
