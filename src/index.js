@@ -7,6 +7,10 @@ import { Slider } from './js/slider';
 class Page {
   constructor() {
     this.nav = new Nav();
+    this._createPortfolio();
+  }
+
+  _createPortfolio() {
     const portfolio = document.getElementById('portfolio-slider');
     const portfolioLightbox = document.getElementById('portfolio-lightbox-slider');
     renderPortfolio(portfolio);
@@ -16,6 +20,24 @@ class Page {
     this.portfolioLightbox = new Lightbox({
       container: document.getElementById('portfolio-lightbox'),
       openButtons: document.querySelectorAll('button[data-lightbox="portfolio-lightbox"]'),
+    });
+    this._syncPortfolioSliders();
+  }
+
+  _syncPortfolioSliders() {
+    this.portfolioLightbox.onOpen.push(() => {
+      const activeSlideIndex = this.portfolioSlider.slides.indexOf(
+        this.portfolioSlider.activeSlide
+      );
+      this.portfolioLightboxSlider.scrollTo(this.portfolioLightboxSlider.slides[activeSlideIndex], {
+        duration: 1,
+      });
+    });
+    this.portfolioLightbox.onClose.push(() => {
+      const activeSlideIndex = this.portfolioLightboxSlider.slides.indexOf(
+        this.portfolioLightboxSlider.activeSlide
+      );
+      this.portfolioSlider.scrollTo(this.portfolioSlider.slides[activeSlideIndex], { duration: 1 });
     });
   }
 }

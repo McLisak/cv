@@ -4,18 +4,22 @@ export class Lightbox {
     this._addOpenListeners(Array.from(options.openButtons));
     this._createCloseButton(options.container);
     this._keyClose = this._keyClose.bind(this);
+    this.onOpen = [];
+    this.onClose = [];
   }
 
   close() {
     this.options.container.classList.remove('active');
     document.body.classList.remove('lightbox-open');
     this._removeKeyboardClose();
+    this.onClose.forEach((fn) => fn());
   }
 
   open() {
     this.options.container.classList.add('active');
     document.body.classList.add('lightbox-open');
     this._addKeyboardClose();
+    this.onOpen.forEach((fn) => fn());
   }
 
   /**

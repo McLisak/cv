@@ -19,6 +19,26 @@ export class Slider {
     this._observeSlides(container);
   }
 
+  scrollTo(slide, options = {}) {
+    if (this._autoScrolling) return;
+    const scrollOptions = {
+      behavior: 'smooth',
+      boundary: this.slidesContainer,
+      scrollMode: 'always',
+      inline: 'center',
+      block: 'nearest',
+      duration: options.duration || 300,
+    };
+    // scroll-snap breaks polyfilled smooth scroll :/
+    this.slidesContainer.style.scrollSnapType = 'none';
+    this._autoScrolling = true;
+
+    scrollIntoView(slide, scrollOptions).then(() => {
+      this.slidesContainer.style.scrollSnapType = '';
+      this._autoScrolling = false;
+    });
+  }
+
   /**
    *
    * @param {HTMLElement} container
@@ -42,37 +62,17 @@ export class Slider {
       if (prevIndex < 0) {
         prevIndex = 0;
       }
-      this._scrollToSlide(this.slides[prevIndex]);
+      this.scrollTo(this.slides[prevIndex]);
     };
     const nextClick = () => {
       let nextIndex = this.slides.indexOf(this.activeSlide) + 1;
       if (nextIndex >= this.slides.length - 1) {
         nextIndex = this.slides.length - 1;
       }
-      this._scrollToSlide(this.slides[nextIndex]);
+      this.scrollTo(this.slides[nextIndex]);
     };
     this.controls.prev.addEventListener('click', prevClick);
     this.controls.next.addEventListener('click', nextClick);
-  }
-
-  _scrollToSlide(slide) {
-    if (this._autoScrolling) return;
-    const scrollOptions = {
-      behavior: 'smooth',
-      boundary: this.slidesContainer,
-      scrollMode: 'always',
-      inline: 'center',
-      block: 'nearest',
-      duration: 300,
-    };
-    // scroll-snap breaks polyfilled smooth scroll :/
-    this.slidesContainer.style.scrollSnapType = 'none';
-    this._autoScrolling = true;
-
-    scrollIntoView(slide, scrollOptions).then(() => {
-      this.slidesContainer.style.scrollSnapType = '';
-      this._autoScrolling = false;
-    });
   }
 
   /**
