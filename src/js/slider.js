@@ -14,6 +14,7 @@ export class Slider {
     this.slides = Array.from(container.getElementsByClassName(SLIDE_CLASS));
     this.activeSlide = null;
     this._autoScrolling = false;
+    this._createShadows(container);
     this._createControls(container);
     this._observeSlides(container);
   }
@@ -55,14 +56,14 @@ export class Slider {
   }
 
   _scrollToSlide(slide) {
-    if (this._autoScrolling || !this.activeSlide) return;
+    if (this._autoScrolling) return;
     const scrollOptions = {
       behavior: 'smooth',
       boundary: this.slidesContainer,
       scrollMode: 'always',
       inline: 'center',
       block: 'nearest',
-      duration: 200,
+      duration: 300,
     };
     // scroll-snap breaks polyfilled smooth scroll :/
     this.slidesContainer.style.scrollSnapType = 'none';
@@ -81,18 +82,21 @@ export class Slider {
     this.observer = new IntersectionObserver((entries) => this._observerCallback(entries, slider), {
       root: slider,
       rootMargin: '-10px',
-      threshold: 1,
+      threshold: 0.8,
     });
     this.slides.forEach((slide) => this.observer.observe(slide));
   }
 
-  _observerCallback(entries, slider) {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        this.activeSlide = entry.target;
-      } else {
-        this.activeSlide = null;
-      }
-    });
+  _observerCallback(entries) {
+    const activeSlide = entries.find(({ isIntersecting }) => isIntersecting);
+    if (activeSlide) {
+      this.activeSlide = activeSlide.target;
+    }
+  }
+
+  _createShadows(container) {
+    const shadows = document.createElement('div');
+    shadows.classList.add('slider-shadows');
+    container.appendChild(shadows);
   }
 }

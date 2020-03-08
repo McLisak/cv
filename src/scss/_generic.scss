@@ -76,3 +76,16 @@ button {
   display: flex;
   justify-content: center;
 }
+
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+::-webkit-scrollbar-thumb {
+  width: 5px;
+  background: rgba(white, 0.33);
+  border-radius: 5px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
