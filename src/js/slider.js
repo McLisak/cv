@@ -20,7 +20,7 @@ export class Slider {
   }
 
   scrollTo(slide, options = {}) {
-    if (this._autoScrolling) return;
+    if (this._autoScrolling || slide === this.activeSlide) return;
     const scrollOptions = {
       behavior: 'smooth',
       boundary: this.slidesContainer,
