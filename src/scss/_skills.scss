@@ -9,6 +9,7 @@
   position: relative;
   font-weight: 700;
   font-size: calc(var(--size) / 3);
+  @include elevation(4);
   &:after {
     letter-spacing: -1px;
     position: absolute;
@@ -22,6 +23,7 @@
   &-mini {
     --size: 50px;
     margin: 2.5px;
+    @include elevation(3);
     &:after {
       letter-spacing: 0;
       right: 50%;
