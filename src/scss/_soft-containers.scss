@@ -18,14 +18,6 @@
 .pushed {
   @include inner-shadow;
 }
-%pseudo-cover {
-  content: '';
-  position: absolute;
-  left: 0;
-  top: 0;
-  bottom: 0;
-  right: 0;
-}
 .pushed2pulled {
   &:before,
   &:after {
@@ -48,14 +40,6 @@
       opacity: 0;
     }
   }
-  &:hover {
-    &:before {
-      opacity: 0.1;
-    }
-    &:after {
-      opacity: 0.5;
-    }
-  }
 }
 .pulled2pushed {
   &:before,
@@ -73,18 +57,10 @@
   }
   &.active {
     &:before {
-      opacity: 0;
+      opacity: 1;
     }
     &:after {
       opacity: 1;
-    }
-  }
-  &:hover {
-    &:before {
-      opacity: 0.9;
-    }
-    &:after {
-      opacity: 0.3;
     }
   }
 }

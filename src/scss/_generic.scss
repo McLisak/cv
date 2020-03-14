@@ -1,5 +1,10 @@
 @import url('https://fonts.googleapis.com/css?family=Poppins:300,400,600,700&display=swap');
 
+:root {
+  --color-bg: #{$color-bg};
+  --color-primary: #{$color-primary};
+}
+
 * {
   box-sizing: border-box;
 }
@@ -88,4 +93,11 @@ button {
 }
 ::-webkit-scrollbar-track {
   background: transparent;
+}
+
+// This creates the classes for each elevation dp with numbers from 1 to 24
+@for $elevation from 1 through 24 {
+  .elevation-#{$elevation} {
+    @include elevation($elevation);
+  }
 }
