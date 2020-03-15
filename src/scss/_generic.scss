@@ -25,56 +25,9 @@ body {
   font-size: 15px;
   &:before {
     @extend %pseudo-cover;
+    @include pattern-scotch;
     z-index: -1;
-    background-color: var(--color-bg);
-    background-image: repeating-linear-gradient(
-        transparent,
-        transparent 50px,
-        rgba(0, 0, 0, 0.3) 50px,
-        rgba(0, 0, 0, 0.3) 53px,
-        transparent 53px,
-        transparent 63px,
-        rgba(0, 0, 0, 0.3) 63px,
-        rgba(0, 0, 0, 0.3) 66px,
-        transparent 66px,
-        transparent 116px,
-        rgba(0, 0, 0, 0.2) 116px,
-        rgba(0, 0, 0, 0.2) 166px,
-        rgba(255, 255, 255, 0.1) 166px,
-        rgba(255, 255, 255, 0.1) 169px,
-        rgba(0, 0, 0, 0.2) 169px,
-        rgba(0, 0, 0, 0.2) 179px,
-        rgba(255, 255, 255, 0.1) 179px,
-        rgba(255, 255, 255, 0.1) 182px,
-        rgba(0, 0, 0, 0.2) 182px,
-        rgba(0, 0, 0, 0.2) 232px,
-        transparent 232px
-      ),
-      repeating-linear-gradient(
-        270deg,
-        transparent,
-        transparent 50px,
-        rgba(0, 0, 0, 0.3) 50px,
-        rgba(0, 0, 0, 0.3) 53px,
-        transparent 53px,
-        transparent 63px,
-        rgba(0, 0, 0, 0.3) 63px,
-        rgba(0, 0, 0, 0.3) 66px,
-        transparent 66px,
-        transparent 116px,
-        rgba(0, 0, 0, 0.2) 116px,
-        rgba(0, 0, 0, 0.2) 166px,
-        rgba(255, 255, 255, 0.1) 166px,
-        rgba(255, 255, 255, 0.1) 169px,
-        rgba(0, 0, 0, 0.2) 169px,
-        rgba(0, 0, 0, 0.2) 179px,
-        rgba(255, 255, 255, 0.1) 179px,
-        rgba(255, 255, 255, 0.1) 182px,
-        rgba(0, 0, 0, 0.2) 182px,
-        rgba(0, 0, 0, 0.2) 232px,
-        transparent 232px
-      );
-    filter: blur(3px);
+    filter: blur(2px);
   }
 }
 
@@ -87,11 +40,10 @@ section {
   flex-direction: column;
   justify-content: space-evenly;
   align-items: center;
-  &.section-solid {
-    background: var(--color-bg);
-  }
 }
-
+.solid {
+  background: var(--color-bg);
+}
 h1,
 h2,
 h3,

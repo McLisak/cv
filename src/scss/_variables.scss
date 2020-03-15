@@ -189,3 +189,95 @@ $cubic-in-cubic: cubic-bezier(0.55, 0.055, 0.675, 0.19);
 }
 
 $border-radius: 10px;
+
+// patterns
+
+@mixin pattern-scotch() {
+  background-color: var(--color-bg);
+  background-image: repeating-linear-gradient(
+      transparent,
+      transparent 50px,
+      rgba(0, 0, 0, 0.3) 50px,
+      rgba(0, 0, 0, 0.3) 53px,
+      transparent 53px,
+      transparent 63px,
+      rgba(0, 0, 0, 0.3) 63px,
+      rgba(0, 0, 0, 0.3) 66px,
+      transparent 66px,
+      transparent 116px,
+      rgba(0, 0, 0, 0.2) 116px,
+      rgba(0, 0, 0, 0.2) 166px,
+      rgba(255, 255, 255, 0.1) 166px,
+      rgba(255, 255, 255, 0.1) 169px,
+      rgba(0, 0, 0, 0.2) 169px,
+      rgba(0, 0, 0, 0.2) 179px,
+      rgba(255, 255, 255, 0.1) 179px,
+      rgba(255, 255, 255, 0.1) 182px,
+      rgba(0, 0, 0, 0.2) 182px,
+      rgba(0, 0, 0, 0.2) 232px,
+      transparent 232px
+    ),
+    repeating-linear-gradient(
+      270deg,
+      transparent,
+      transparent 50px,
+      rgba(0, 0, 0, 0.3) 50px,
+      rgba(0, 0, 0, 0.3) 53px,
+      transparent 53px,
+      transparent 63px,
+      rgba(0, 0, 0, 0.3) 63px,
+      rgba(0, 0, 0, 0.3) 66px,
+      transparent 66px,
+      transparent 116px,
+      rgba(0, 0, 0, 0.2) 116px,
+      rgba(0, 0, 0, 0.2) 166px,
+      rgba(255, 255, 255, 0.1) 166px,
+      rgba(255, 255, 255, 0.1) 169px,
+      rgba(0, 0, 0, 0.2) 169px,
+      rgba(0, 0, 0, 0.2) 179px,
+      rgba(255, 255, 255, 0.1) 179px,
+      rgba(255, 255, 255, 0.1) 182px,
+      rgba(0, 0, 0, 0.2) 182px,
+      rgba(0, 0, 0, 0.2) 232px,
+      transparent 232px
+    );
+}
+@mixin upholstery() {
+  background: radial-gradient(
+        hsl(197, 36%, 22%) 4%,
+        hsl(197, 36%, 13%) 9%,
+        hsla(197, 36%, 15%, 0) 9%
+      )
+      0 0,
+    radial-gradient(hsl(197, 36%, 22%) 4%, hsl(197, 36%, 13%) 8%, hsla(197, 36%, 15%, 0) 10%) 50px
+      50px,
+    radial-gradient(hsla(197, 36%, 25%, 0.8) 20%, hsla(197, 36%, 15%, 0)) 50px 0,
+    radial-gradient(hsla(197, 36%, 24%, 0.8) 20%, hsla(197, 36%, 15%, 0)) 0 50px,
+    radial-gradient(hsla(197, 36%, 15%, 1) 35%, hsla(197, 36%, 15%, 0) 60%) 50px 0,
+    radial-gradient(hsla(197, 36%, 15%, 1) 35%, hsla(197, 36%, 15%, 0) 60%) 100px 50px,
+    radial-gradient(hsla(197, 36%, 10%, 0.7), hsla(197, 36%, 15%, 0)) 0 0,
+    radial-gradient(hsla(197, 36%, 10%, 0.7), hsla(197, 36%, 15%, 0)) 50px 50px,
+    linear-gradient(
+        45deg,
+        hsla(197, 36%, 20%, 0) 49%,
+        hsla(197, 36%, 0%, 1) 50%,
+        hsla(197, 36%, 20%, 0) 70%
+      )
+      0 0,
+    linear-gradient(
+        -45deg,
+        hsla(197, 36%, 20%, 0) 49%,
+        hsla(197, 36%, 0%, 1) 50%,
+        hsla(197, 36%, 20%, 0) 70%
+      )
+      0 0;
+  background-color: var(--color-bg);
+  background-size: 100px 100px;
+}
+
+.pattern-scotch {
+  @include pattern-scotch;
+}
+.pattern-upholstery {
+  @include upholstery;
+}
