@@ -20,20 +20,76 @@ body {
   justify-content: center;
   align-items: center;
   line-height: 1.1;
-  padding: 15px 15px 55px 15px;
+  padding-bottom: 55px;
   @include text-shadow(0);
   font-size: 15px;
+  &:before {
+    @extend %pseudo-cover;
+    z-index: -1;
+    background-color: var(--color-bg);
+    background-image: repeating-linear-gradient(
+        transparent,
+        transparent 50px,
+        rgba(0, 0, 0, 0.3) 50px,
+        rgba(0, 0, 0, 0.3) 53px,
+        transparent 53px,
+        transparent 63px,
+        rgba(0, 0, 0, 0.3) 63px,
+        rgba(0, 0, 0, 0.3) 66px,
+        transparent 66px,
+        transparent 116px,
+        rgba(0, 0, 0, 0.2) 116px,
+        rgba(0, 0, 0, 0.2) 166px,
+        rgba(255, 255, 255, 0.1) 166px,
+        rgba(255, 255, 255, 0.1) 169px,
+        rgba(0, 0, 0, 0.2) 169px,
+        rgba(0, 0, 0, 0.2) 179px,
+        rgba(255, 255, 255, 0.1) 179px,
+        rgba(255, 255, 255, 0.1) 182px,
+        rgba(0, 0, 0, 0.2) 182px,
+        rgba(0, 0, 0, 0.2) 232px,
+        transparent 232px
+      ),
+      repeating-linear-gradient(
+        270deg,
+        transparent,
+        transparent 50px,
+        rgba(0, 0, 0, 0.3) 50px,
+        rgba(0, 0, 0, 0.3) 53px,
+        transparent 53px,
+        transparent 63px,
+        rgba(0, 0, 0, 0.3) 63px,
+        rgba(0, 0, 0, 0.3) 66px,
+        transparent 66px,
+        transparent 116px,
+        rgba(0, 0, 0, 0.2) 116px,
+        rgba(0, 0, 0, 0.2) 166px,
+        rgba(255, 255, 255, 0.1) 166px,
+        rgba(255, 255, 255, 0.1) 169px,
+        rgba(0, 0, 0, 0.2) 169px,
+        rgba(0, 0, 0, 0.2) 179px,
+        rgba(255, 255, 255, 0.1) 179px,
+        rgba(255, 255, 255, 0.1) 182px,
+        rgba(0, 0, 0, 0.2) 182px,
+        rgba(0, 0, 0, 0.2) 232px,
+        transparent 232px
+      );
+    filter: blur(3px);
+  }
 }
 
 section {
   position: relative;
   width: 100%;
   min-height: 95vh;
-  padding: 25px 0;
+  padding: 25px 15px;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
   align-items: center;
+  &.section-solid {
+    background: var(--color-bg);
+  }
 }
 
 h1,
