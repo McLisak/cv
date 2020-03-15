@@ -5,21 +5,20 @@ $color-primary: #c56a15;
 
 // Shadows
 
-$outer-shadow: 0 3px 6px rgba(black, 0.4), 0 5px 10px rgba(black, 0.2),
+$pulled-shadow: 0 3px 6px rgba(black, 0.4), 0 5px 10px rgba(black, 0.2),
   0 -3px 6px rgba(whitesmoke, 0.05), 0 -5px 10px rgba(whitesmoke, 0.03);
-
-@mixin outer-shadow {
-  box-shadow: $outer-shadow;
+@mixin pulled-shadow {
+  box-shadow: $pulled-shadow;
 }
-$inner-shadow: inset 0 3px 6px rgba(black, 0.4), inset 0 5px 10px rgba(black, 0.2),
-  inset 0 -3px 6px rgba(whitesmoke, 0.05), inset 0 -5px 10px rgba(whitesmoke, 0.03);
 
-@mixin inner-shadow {
-  box-shadow: $inner-shadow;
+$pushed-shadow: inset 0 3px 6px rgba(black, 0.4), inset 0 5px 10px rgba(black, 0.2),
+  inset 0 -3px 6px rgba(whitesmoke, 0.05), inset 0 -5px 10px rgba(whitesmoke, 0.03);
+@mixin pushed-shadow {
+  box-shadow: $pushed-shadow;
 }
 
 @mixin frame-shadow {
-  box-shadow: $outer-shadow, $inner-shadow;
+  box-shadow: $pulled-shadow, $pushed-shadow;
 }
 
 $inset-shadow: inset 3px 3px 6px rgba(black, 0.4), inset 5px 5px 6px rgba(black, 0.2),

@@ -13,11 +13,12 @@
   border-radius: 50%;
 }
 .pulled {
-  @include outer-shadow;
+  @include pulled-shadow;
 }
 .pushed {
-  @include inner-shadow;
+  @include pushed-shadow;
 }
+
 .pushed2pulled {
   &:before,
   &:after {
@@ -26,11 +27,11 @@
   }
   &:before {
     opacity: 0;
-    @include outer-shadow;
+    @include pulled-shadow;
   }
   &:after {
     opacity: 1;
-    @include inner-shadow;
+    @include pushed-shadow;
   }
   &.active {
     &:before {
@@ -49,11 +50,11 @@
   }
   &:before {
     opacity: 1;
-    @include outer-shadow;
+    @include pulled-shadow;
   }
   &:after {
     opacity: 0;
-    @include inner-shadow;
+    @include pushed-shadow;
   }
   &.active {
     &:before {
