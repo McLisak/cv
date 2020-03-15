@@ -67,6 +67,7 @@
     white-space: normal;
     margin: 0 2%;
     padding: 5px 10px;
+    border-radius: $border-radius;
     @include elevation(8);
   }
   .slider-control {

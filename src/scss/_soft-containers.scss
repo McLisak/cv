@@ -3,7 +3,7 @@
   --size: 300px;
   position: relative;
   display: flex;
-  border-radius: 10px;
+  border-radius: $border-radius;
   width: 100%;
   max-width: var(--size);
   min-height: var(--size);
@@ -19,6 +19,12 @@
   @include pushed-shadow;
 }
 
+.text-pulled {
+  @include text-pulled;
+}
+.text-pushed {
+  @include text-pushed;
+}
 .pushed2pulled {
   &:before,
   &:after {

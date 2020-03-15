@@ -1,6 +1,6 @@
 // Colors
 
-$color-bg: #1d3138;
+$color-bg: #203a44;
 $color-primary: #c56a15;
 
 // Shadows
@@ -25,6 +25,19 @@ $inset-shadow: inset 3px 3px 6px rgba(black, 0.4), inset 5px 5px 6px rgba(black,
   inset -3px -3px 6px rgba(black, 0.4), inset -5px -5px 6px rgba(black, 0.2);
 @mixin inset-shadow {
   box-shadow: $inset-shadow;
+}
+
+$text-3d-shadow: 0 -0.02em 0.02em rgba(whitesmoke, 0.03), 0 -0.06em 0.04em rgba(whitesmoke, 0.04),
+  0 0.02em 0.02em rgba(black, 0.2), 0 0.06em 0.07em rgba(black, 0.3);
+
+@mixin text-pulled {
+  color: lighten($color-bg, 0.5%);
+  text-shadow: $text-3d-shadow;
+}
+
+@mixin text-pushed {
+  color: transparent;
+  text-shadow: 0 0.025em 0.015em rgba(whitesmoke, 0.03), 0 0 0 darken($color-bg, 7%);
 }
 
 $key-shadow-umbra-colour: rgba(black, 0.14);
@@ -119,16 +132,46 @@ $ambient-shadow-map: (
 }
 
 @mixin text-shadow($elevation: 1, $dark-color: rgba(black, 0.6)) {
-  @if $elevation == 1 {
-    text-shadow: 1px 2px 2px $dark-color;
-  } @else if $elevation == 0 {
-    text-shadow: 1px 1px 1px $dark-color;
+  @if $elevation == 0 {
+    text-shadow: 0 1px 1px $dark-color;
+  } @else if $elevation == 1 {
+    text-shadow: 0 2px 2px $dark-color;
   } @else if $elevation == 2 {
-    text-shadow: 1px 2px 2px $dark-color, 2px 3px 5px lighten($dark-color, 20%);
+    text-shadow: 0 2px 2px $dark-color, 0 3px 5px lighten($dark-color, 20%);
   } @else if $elevation == 3 {
-    text-shadow: 1px 2px 2px $dark-color, 2px 3px 5px lighten($dark-color, 10%),
-      3px 5px 10px lighten($dark-color, 20%);
+    text-shadow: 0 2px 2px $dark-color, 0 3px 5px lighten($dark-color, 10%),
+      0 5px 10px lighten($dark-color, 20%);
   }
+}
+
+@function text-stroke($size: 1, $color: black) {
+  $radius: $size;
+  $stroke: ();
+
+  @for $i from -$size through $size {
+    @for $k from -$size through $size {
+      $x: $k;
+      $y: $i;
+
+      @if $k > 0 {
+        $x: $k - 1;
+      } @else if $k < 0 {
+        $x: $k + 1;
+      }
+
+      @if $i > 0 {
+        $y: $i - 1;
+      } @else if $i < 0 {
+        $y: $i + 1;
+      }
+
+      @if ($x * $x + $y * $y <= $radius * $radius) {
+        $stroke: append($stroke, $i * 1px $k * 1px 0.5px $color, comma);
+      }
+    }
+  }
+
+  @return $stroke;
 }
 
 // Beziers
@@ -144,3 +187,5 @@ $cubic-in-cubic: cubic-bezier(0.55, 0.055, 0.675, 0.19);
   bottom: 0;
   right: 0;
 }
+
+$border-radius: 10px;
