@@ -281,3 +281,15 @@ $border-radius: 10px;
 .pattern-upholstery {
   @include upholstery;
 }
+
+// media
+$breakpoints: (
+  s: 479px,
+  m: 767px,
+  l: 991px,
+);
+@mixin screen($size) {
+  @media screen and (min-width: map-get($breakpoints, $size)) {
+    @content;
+  }
+}

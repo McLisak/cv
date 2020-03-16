@@ -24,13 +24,15 @@
     overflow-x: auto;
     scroll-snap-type: x proximity;
     scroll-snap-align: center;
+
+    font-size: 16px;
     li {
       position: relative;
       display: flex;
       align-items: center;
       text-align: center;
       white-space: nowrap;
-      padding: 0 12.5px;
+      padding: 0 0.7em;
       line-height: 1;
       cursor: pointer;
       &:before {

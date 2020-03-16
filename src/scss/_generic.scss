@@ -8,6 +8,9 @@
 * {
   box-sizing: border-box;
 }
+html {
+  font-size: 13px;
+}
 body {
   font-family: 'Poppins', Helvetica, Arial, sans-serif;
   color: whitesmoke;
@@ -22,7 +25,6 @@ body {
   line-height: 1.1;
   padding-bottom: 55px;
   @include text-shadow(0);
-  font-size: 15px;
   &:before {
     @extend %pseudo-cover;
     @include pattern-scotch;
@@ -35,7 +37,7 @@ section {
   position: relative;
   width: 100%;
   min-height: 95vh;
-  padding: 25px 15px;
+  padding: 2.2em 1.1em;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
@@ -81,10 +83,11 @@ button {
   @include pulled-shadow;
   border: none;
   padding: 1em;
+  font-size: 1.1rem;
   cursor: pointer;
   color: white;
   font-family: inherit;
-  margin: 10px 5px;
+  margin: 1em 0.5em;
   text-transform: uppercase;
 }
 .container {
@@ -111,5 +114,21 @@ button {
 @for $elevation from 1 through 24 {
   .elevation-#{$elevation} {
     @include elevation($elevation);
+  }
+}
+
+@include screen(s) {
+  html {
+    font-size: 14px;
+  }
+}
+@include screen(m) {
+  html {
+    font-size: 15px;
+  }
+}
+@include screen(l) {
+  html {
+    font-size: 16px;
   }
 }

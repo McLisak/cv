@@ -22,7 +22,7 @@
   }
   &-mini {
     --size: 50px;
-    margin: 2.5px;
+    margin: 0.25rem;
     @include elevation(3);
     &:after {
       letter-spacing: 0;
