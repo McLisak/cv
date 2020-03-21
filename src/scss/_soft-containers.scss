@@ -12,11 +12,21 @@
 .round {
   border-radius: 50%;
 }
+
 .pulled {
   @include pulled-shadow;
 }
+
 .pushed {
   @include pushed-shadow;
+}
+
+.convex {
+  background: $color-bg overlay-shadow();
+}
+
+.concave {
+  background: $color-bg overlay-shadow(#{180deg - $light-angle});
 }
 
 .text-pulled {

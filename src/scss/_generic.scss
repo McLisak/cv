@@ -17,22 +17,18 @@ body {
   margin: 0;
   background: var(--color-bg);
   position: relative;
-  width: 100%;
+  line-height: 1.1;
+  @include text-shadow(0);
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  line-height: 1.1;
-  padding-bottom: 55px;
-  @include text-shadow(0);
-  &:before {
-    @extend %pseudo-cover;
-    @include pattern-scotch;
-    z-index: -1;
-    filter: blur(2px);
-  }
+  justify-content: space-between;
+  width: 100%;
+  height: 100vh;
 }
-
+#content {
+  flex-grow: 1;
+  overflow: auto;
+}
 section {
   position: relative;
   width: 100%;
@@ -77,6 +73,12 @@ h4 {
   justify-content: center;
   align-items: center;
 }
+.container {
+  max-width: 1000px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
 
 button {
   background: var(--color-bg);
@@ -89,12 +91,6 @@ button {
   font-family: inherit;
   margin: 1em 0.5em;
   text-transform: uppercase;
-}
-.container {
-  max-width: 1000px;
-  width: 100%;
-  display: flex;
-  justify-content: center;
 }
 
 ::-webkit-scrollbar {
@@ -131,4 +127,31 @@ button {
   html {
     font-size: 16px;
   }
+}
+
+// grid
+.grid {
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  grid-template-rows: auto;
+}
+@for $col from 1 through 10 {
+  .col-#{$col} {
+    grid-column: span #{$col};
+  }
+}
+
+// background patterns
+
+.pattern-scotch {
+  &:before {
+    @extend %pseudo-cover;
+    @include pattern-scotch;
+    z-index: -1;
+    filter: blur(2px);
+  }
+}
+
+.pattern-upholstery {
+  @include upholstery;
 }

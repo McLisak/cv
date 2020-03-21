@@ -5,62 +5,76 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0 user-scalable=0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>CV</title>
+
     <link rel="stylesheet" href="./index.scss" />
   </head>
   <body>
+    <div id="content">
+      <section class="pattern-scotch" name="About Me">
+        <h1>Maciej Lisak</h1>
+        <div class="avatar-container">
+          <div class="round avatar elevation-24">
+            <img src="./assets/avatar-fg.png" alt="" />
+          </div>
+        </div>
+        <h2 class="title">
+          About me
+        </h2>
+      </section>
+      <section class="solid" name="Portfolio">
+        <h2>Things I've done</h2>
+        <div id="portfolio-slider" class="slider"></div>
+        <button data-lightbox="portfolio-lightbox">
+          read more
+        </button>
+        <div id="portfolio-lightbox" class="lightbox">
+          <div class="container">
+            <div id="portfolio-lightbox-slider" class="slider slider-fullscreen"></div>
+          </div>
+        </div>
+      </section>
+      <section class="pattern-upholstery" name="Skills">
+        <h2>Skills</h2>
+        <div class="skills">
+          <div class="skill skill-js"></div>
+          <div class="skill skill-ts"></div>
+          <div class="skill skill-css"></div>
+          <div class="skill skill-scss"></div>
+          <div class="skill skill-webpack"></div>
+          <div class="skill skill-parcel"></div>
+          <div class="skill skill-nodejs"></div>
+          <div class="skill skill-react"></div>
+          <div class="skill skill-vue"></div>
+          <div class="skill skill-gpt"></div>
+          <div class="skill skill-ima"></div>
+          <div class="skill skill-gam place-center"></div>
+          <div class="skill skill-vast"></div>
+          <div class="skill skill-aws"></div>
+        </div>
+      </section>
+      <section name="Hobbies">
+        <h2>Hobbies</h2>
+      </section>
+      <section class="solid" name="Containers">
+        <h2 class="text-pulled" style="font-size: 6rem;">Pulled text</h2>
+        <h2 class="text-pushed" style="font-size: 6rem;">Pushed text</h2>
+        <div class="box pulled"></div>
+        <div class="box pushed"></div>
+        <div class="box pulled convex"></div>
+        <div class="box pulled concave"></div>
+        <div class="box frame"></div>
+        <div class="box frame round"></div>
+        <div class="box pulled round"></div>
+        <div class="box pushed round"></div>
+        <div class="box pulled2pushed"></div>
+        <div class="box pushed2pulled"></div>
+        <div class="box pulled2pushed round"></div>
+        <div class="box pushed2pulled round"></div>
+      </section>
+    </div>
     <nav id="main-nav">
       <ul></ul>
     </nav>
-    <section name="About Me">
-      <h1>Maciej Lisak</h1>
-      <div class="avatar-container">
-        <div class="round avatar elevation-24">
-          <img src="./assets/avatar-fg.png" alt="" />
-        </div>
-      </div>
-      <h2 class="title">
-        About me
-      </h2>
-    </section>
-    <section class="solid" name="Portfolio">
-      <h2>Things I've done</h2>
-      <div id="portfolio-slider" class="slider"></div>
-      <button data-lightbox="portfolio-lightbox">
-        read more
-      </button>
-      <div id="portfolio-lightbox" class="lightbox">
-        <div class="container">
-          <div id="portfolio-lightbox-slider" class="slider slider-fullscreen"></div>
-        </div>
-      </div>
-    </section>
-    <section class="pattern-upholstery" name="Skills">
-      <h2>Skills</h2>
-      <div class="box skill skill-mini skill-js"></div>
-      <div class="box skill skill-ts"></div>
-      <div class="box skill skill-css"></div>
-      <div class="box skill skill-scss"></div>
-      <div class="box skill skill-webpack"></div>
-      <div class="box skill skill-mini skill-webpack"></div>
-      <div class="box skill skill-aws"></div>
-    </section>
-    <section name="Hobbies">
-      <h2>Hobbies</h2>
-    </section>
-    <section class="solid" name="Containers">
-      <h2 class="text-pulled" style="font-size: 6rem;">Pulled text</h2>
-      <h2 class="text-pushed" style="font-size: 6rem;">Pushed text</h2>
-      <div class="box pulled"></div>
-      <div class="box pushed"></div>
-      <div class="box frame"></div>
-      <div class="box frame round"></div>
-      <div class="box pulled round"></div>
-      <div class="box pushed round"></div>
-      <div class="box pulled2pushed"></div>
-      <div class="box pushed2pulled"></div>
-      <div class="box pulled2pushed round"></div>
-      <div class="box pushed2pulled round"></div>
-    </section>
     <script src="./index.js"></script>
   </body>
 </html>
