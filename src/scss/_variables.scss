@@ -2,6 +2,7 @@
 
 $color-bg: #203a44;
 $color-primary: #c56a15;
+$color-scrollbar: #3c5f6d;
 
 // Shadows
 @function pulled-shadow($x, $y) {
@@ -264,7 +265,7 @@ $border-radius: 10px;
       transparent 232px
     );
 }
-@mixin upholstery() {
+@mixin pattern-upholstery() {
   background: radial-gradient(
         hsl(197, 36%, 22%) 4%,
         hsl(197, 36%, 13%) 9%,
@@ -296,7 +297,31 @@ $border-radius: 10px;
   background-color: var(--color-bg);
   background-size: 100px 100px;
 }
-
+@mixin pattern-scallop($color: $color-bg) {
+  background: repeating-linear-gradient(
+    135deg,
+    $color,
+    lighten($color, 10%) 10px,
+    darken($color, 10%) 10px,
+    $color 30px
+  );
+  background-color: $color;
+}
+@mixin pattern-flat-panels($color: $color-bg) {
+  background: repeating-linear-gradient(
+    135deg,
+    darken($color, 8%),
+    darken($color, 8%) 4px,
+    $color 4px,
+    $color 97px
+  );
+  background-color: $color;
+}
+@mixin pattern-stars($color: $color-bg) {
+  background: radial-gradient($color 75%, darken($color, 10%)) 5px 5px;
+  background-size: 15px 15px;
+  background-color: $color;
+}
 // media
 $breakpoints: (
   s: 479px,

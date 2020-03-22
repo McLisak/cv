@@ -7,7 +7,7 @@
   box-sizing: border-box;
 }
 html {
-  font-size: 13px;
+  font-size: 14px;
 }
 body {
   font-family: 'Poppins', Helvetica, Arial, sans-serif;
@@ -80,7 +80,7 @@ button {
   border: none;
   border-radius: $border-radius;
   padding: 1em;
-  font-size: 1.05rem;
+  font-size: 0.95rem;
   cursor: pointer;
   color: white;
   font-family: inherit;
@@ -94,7 +94,7 @@ button {
 }
 ::-webkit-scrollbar-thumb {
   width: 5px;
-  background: rgba(white, 0.15);
+  background: $color-scrollbar;
   border-radius: $border-radius;
 }
 ::-webkit-scrollbar-track {
@@ -110,17 +110,17 @@ button {
 
 @include screen(s) {
   html {
-    font-size: 14px;
+    font-size: 15px;
   }
 }
 @include screen(m) {
   html {
-    font-size: 15px;
+    font-size: 16px;
   }
 }
 @include screen(l) {
   html {
-    font-size: 16px;
+    font-size: 18px;
   }
 }
 
@@ -137,5 +137,14 @@ button {
   }
 }
 .pattern-upholstery {
-  @include upholstery;
+  @include pattern-upholstery;
+}
+.pattern-scallop {
+  @include pattern-scallop;
+}
+.pattern-flat-panels {
+  @include pattern-flat-panels;
+}
+.pattern-stars {
+  @include pattern-stars;
 }

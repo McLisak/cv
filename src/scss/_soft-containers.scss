@@ -91,7 +91,6 @@
 
 .frame {
   z-index: 1;
-  background: inherit;
   border: 20px solid var(--color-bg);
   @include frame-shadow;
 }
