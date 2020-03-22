@@ -22,11 +22,11 @@
 }
 
 .convex {
-  background: $color-bg overlay-shadow();
+  background: lighting-gradient();
 }
 
 .concave {
-  background: $color-bg overlay-shadow(#{180deg - $light-angle});
+  background: lighting-gradient(#{$light-angle - 180deg});
 }
 
 .text-pulled {

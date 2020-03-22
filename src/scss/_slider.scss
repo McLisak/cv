@@ -70,6 +70,16 @@
     padding: 0.5em 1em;
     border-radius: $border-radius;
     @include elevation(8);
+
+    &-content {
+      display: flex;
+      font-display: column;
+      align-items: center;
+      justify-content: center;
+      flex-grow: 1;
+      overflow: auto;
+      padding: 5px;
+    }
   }
   .slider-control {
     --size: 33px;

@@ -6,3 +6,7 @@ export function debounce(fn, time) {
     timeout = setTimeout(call, time);
   };
 }
+
+export const addOrRemoveClass = (element, className, add) => {
+  element.classList[add ? 'add' : 'remove'](className);
+};
