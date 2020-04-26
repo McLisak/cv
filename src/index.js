@@ -3,11 +3,13 @@ import { Nav } from './js/nav';
 import { renderPortfolio } from './js/portfolio';
 import { Lightbox } from './js/lightbox';
 import { Slider } from './js/slider';
+import { StickyObserver } from './js/sticky-observer';
 
 class Page {
   constructor() {
     this.nav = new Nav();
     this._createPortfolio();
+    this._spySectionTitles();
   }
 
   _createPortfolio() {
@@ -38,6 +40,15 @@ class Page {
         this.portfolioLightboxSlider.activeSlide
       );
       this.portfolioSlider.scrollTo(this.portfolioSlider.slides[activeSlideIndex], { duration: 1 });
+    });
+  }
+
+  _spySectionTitles() {
+    this.stickyObserver = new StickyObserver(document.getElementsByClassName('section-title'));
+    this.stickyObserver.callbacks.push((sticks, element) => {
+      window.requestAnimationFrame(() => {
+        element.classList[sticks ? 'add' : 'remove']('sticks');
+      });
     });
   }
 }

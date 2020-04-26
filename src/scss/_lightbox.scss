@@ -13,7 +13,7 @@ body.lightbox-open {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  z-index: 2;
+  z-index: 10;
 
   pointer-events: none;
   opacity: 0;
@@ -39,7 +39,7 @@ body.lightbox-open {
       left: 50%;
       width: 20px;
       height: 1px;
-      background: white;
+      background: currentColor;
     }
     &:before {
       transform: translate(-50%, -50%) rotate(45deg);

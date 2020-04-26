@@ -1,0 +1,12 @@
+.sticky {
+  position: sticky;
+  top: 0;
+  &-spy {
+    position: absolute;
+    left: 0;
+    right: 0;
+    visibility: hidden;
+    height: 1px;
+    top: -1px;
+  }
+}

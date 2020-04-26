@@ -22,6 +22,7 @@ body {
   justify-content: space-between;
   width: 100%;
   padding-bottom: 55px;
+  overflow-x: hidden;
 }
 section {
   position: relative;
@@ -86,6 +87,13 @@ button {
   font-family: inherit;
   margin: 1em 0.5em;
   text-transform: uppercase;
+  transform-origin: center;
+  transition: transform 125ms $cubic-out-cubic;
+  &:focus {
+    transform: scale(1.1);
+    color: var(--color-primary);
+    outline: none;
+  }
 }
 
 ::-webkit-scrollbar {
@@ -105,6 +113,37 @@ button {
 @for $elevation from 1 through 24 {
   .elevation-#{$elevation} {
     @include elevation($elevation);
+  }
+}
+
+.section-title {
+  width: 100%;
+  min-height: 5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+  transition: transform 250ms $cubic-out-cubic;
+  transform: scale(1);
+  transform-origin: top center;
+  &:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: -50%;
+    right: -50%;
+    @include elevation(10);
+    opacity: 0;
+    transition: opacity 300ms $cubic-out-cubic;
+    background: var(--color-bg);
+    z-index: -1;
+  }
+  &.sticks {
+    transform: scale(0.7);
+    &:before {
+      opacity: 1;
+    }
   }
 }
 
