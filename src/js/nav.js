@@ -6,14 +6,35 @@ const ACTIVE_CLASS = 'active';
 const HOVER_CLASS = 'hover';
 export class Nav {
   constructor() {
+    this.pathMap = {};
+    this.basename = window.location.hostname;
     this.$sections = Array.from(document.body.querySelectorAll('section[name]'));
+    this.$nav = document.getElementById(MAIN_ID);
+    this.$list = this.$nav.getElementsByTagName('ul')[0];
+    this.$items = this._createItems();
 
-    this.sectionObserver = new IntersectionObserver(this._observeSections.bind(this), {
-      root: null,
-      rootMargin: '-200px 0px -150px 0px',
-      threshold: 0,
+    this.goToSection(
+      this.$sections.find(($section) => $section.dataset.path === window.location.pathname),
+      { duration: 0 }
+    ).then(() => {
+      this._setupInteractivity();
     });
+  }
 
+  goToSection($section, options) {
+    const defaultOptions = {
+      scrollMode: 'always',
+      behavior: 'smooth',
+      block: 'start',
+    };
+    if (!$section) return Promise.resolve();
+    return scrollIntoView($section, {
+      ...defaultOptions,
+      ...options,
+    });
+  }
+
+  _setupInteractivity() {
     this._debouncedNavScroll = debounce(($item) => {
       scrollIntoView($item, {
         scrollMode: 'always',
@@ -24,21 +45,17 @@ export class Nav {
       });
     }, 300);
 
-    this.$nav = document.getElementById(MAIN_ID);
-    this.$list = this.$nav.getElementsByTagName('ul')[0];
-    this._addNavEventListeners();
+    this.sectionObserver = new IntersectionObserver(this._observeSections.bind(this), {
+      root: null,
+      rootMargin: '-40% 0px -60% 0px',
+      threshold: 0,
+    });
 
-    this.$items = this._createItems();
-  }
-
-  _addNavEventListeners() {
-    this.$nav.addEventListener('click', ({ target }) => {
-      if (!target.tagName === 'LI') return;
-      scrollIntoView(target.correspondingSection, {
-        scrollMode: 'always',
-        behavior: 'smooth',
-        block: 'start',
-      });
+    this.$items.forEach(($item) => {
+      this.sectionObserver.observe($item.correspondingSection);
+      $item.addEventListener('click', ({ target }) =>
+        this.goToSection(target.correspondingSection)
+      );
     });
   }
 
@@ -47,7 +64,6 @@ export class Nav {
     $item.correspondingSection = $section;
     $section.correspondingNavItem = $item;
     $item.setAttribute('name', ($item.innerText = $section.getAttribute('name')));
-    this.sectionObserver.observe($section);
     this._addHoverEffect($item);
     this.$list.appendChild($item);
     return $item;
@@ -59,9 +75,13 @@ export class Nav {
 
   _observeSections(entries) {
     entries.forEach((entry) => {
-      const $navItem = entry.target.correspondingNavItem;
+      const {
+        correspondingNavItem: $navItem,
+        dataset: { path },
+      } = entry.target;
       if (entry.isIntersecting) {
         this._activateItem($navItem);
+        window.history.replaceState(path, '', path);
       } else {
         this._deactivateItem($navItem);
       }
@@ -69,12 +89,14 @@ export class Nav {
   }
 
   _activateItem($item) {
+    if (!$item) return;
     $item.classList.add(ACTIVE_CLASS);
     $item.classList.remove(HOVER_CLASS);
     this._debouncedNavScroll($item);
   }
 
   _deactivateItem($item) {
+    if (!$item) return;
     $item.classList.remove(ACTIVE_CLASS);
   }
 

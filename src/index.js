@@ -7,9 +7,9 @@ import { StickyObserver } from './js/sticky-observer';
 
 class Page {
   constructor() {
-    this.nav = new Nav();
     this._createPortfolio();
     this._spySectionTitles();
+    this.nav = new Nav();
   }
 
   _createPortfolio() {
