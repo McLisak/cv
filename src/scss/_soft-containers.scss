@@ -49,7 +49,7 @@
     opacity: 1;
     @include pushed-shadow;
   }
-  &.active {
+  &.active, &:hover {
     &:before {
       opacity: 1;
     }
@@ -72,7 +72,7 @@
     opacity: 0;
     @include pushed-shadow;
   }
-  &.active {
+  &.active, &:hover {
     &:before {
       opacity: 1;
     }

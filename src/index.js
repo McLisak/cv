@@ -4,11 +4,13 @@ import { renderPortfolio } from './js/portfolio';
 import { Lightbox } from './js/lightbox';
 import { Slider } from './js/slider';
 import { StickyObserver } from './js/sticky-observer';
+import { renderHobbies } from './js/hobbies';
 
 class Page {
   constructor() {
     this._createPortfolio();
     this._spySectionTitles();
+    this._renderHobbies();
     this.nav = new Nav();
   }
 
@@ -50,6 +52,10 @@ class Page {
         element.classList[sticks ? 'add' : 'remove']('sticks');
       });
     });
+  }
+
+  _renderHobbies() {
+    renderHobbies(document.getElementById('hobbies-container'));
   }
 }
 
