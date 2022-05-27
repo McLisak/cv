@@ -1,9 +1,16 @@
 export default {
+  // TODO: add recent activities
+  // tvAuth: {},
+  // tvLandingpage: {},
+  // landingpageManager: {},
+  // optimizely: {},
+  // platformOnboarding: {},
   dux: {
     name: 'DUX',
     short:
       'DAZN User Experience. Modular JS client library that controls common features like ads, GDPR, content personalization, and many others - across DAZN portals.',
-    description: '',
+    description:
+      'DAZN User Experience. Modular JS client library that controls common features like ads, GDPR, content personalization, and many others - across DAZN portals.',
     skills: ['ts', 'webpack', 'aws', 'gpt'],
   },
   cte: {
@@ -22,7 +29,8 @@ export default {
   cv: {
     name: 'CV',
     short: 'This page :D',
-    description: 'This page :D',
+    description:
+      'This page :D I had fun creating a different kind of resume/CV. I wanted to created a visually interesting page written entirely by hand. No frameworks, no unnecessary tools or no tools used unneccesarily. View the source code <a target="_blank" href="https://github.com">here</a>',
     skills: ['js', 'scss', 'parcel'],
   },
 };

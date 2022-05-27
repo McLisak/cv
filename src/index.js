@@ -17,8 +17,8 @@ class Page {
   _createPortfolio() {
     const portfolio = document.getElementById('portfolio-slider');
     const portfolioLightbox = document.getElementById('portfolio-lightbox-slider');
-    renderPortfolio(portfolio);
-    renderPortfolio(portfolioLightbox);
+    renderPortfolio({ container: portfolio });
+    renderPortfolio({ container: portfolioLightbox, fullDescription: true });
     this.portfolioSlider = new Slider(portfolio);
     this.portfolioLightboxSlider = new Slider(portfolioLightbox);
     this.portfolioLightbox = new Lightbox({

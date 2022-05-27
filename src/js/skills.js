@@ -1,0 +1,16 @@
+export const skills = [
+  'js',
+  'ts',
+  'scss',
+  'css',
+  'vue',
+  'react',
+  'webpack',
+  'parcel',
+  'nodejs',
+  'gpt',
+  'ima',
+  'gam',
+  'vast',
+  'aws',
+];

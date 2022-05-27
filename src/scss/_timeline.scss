@@ -1,0 +1,55 @@
+.timeline {
+  text-align: left;
+  max-width: 800px;
+  width: 90%;
+  font-size: 1rem;
+
+  h4 {
+    text-align: left;
+    margin: 0;
+  }
+
+  &-item {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    padding-left: 4em;
+    padding-top: 2.5em;
+
+    &::before,
+    &::after {
+      content: '';
+      position: absolute;
+      background-color: white;
+    }
+
+    &::before {
+      width: 1em;
+      height: 1em;
+      left: 1em;
+      top: 3em;
+      border-radius: 50%;
+    }
+
+    &:not(:last-child) {
+      // padding-bottom: 2em;
+      &::after {
+        width: 0.1em;
+        height: 100%;
+        left: 1.45em;
+        top: 3em;
+      }
+    }
+
+    &-date {
+      position: absolute;
+      padding: .75em;
+      left: 0;
+      bottom: calc(100% - 3em);
+      font-size: 0.75em;
+      background: $color-bg;
+      @include elevation(4);
+    }
+
+  }
+}
