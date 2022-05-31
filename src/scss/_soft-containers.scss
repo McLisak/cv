@@ -1,12 +1,14 @@
 /* CONTAINER VARIANTS */
+:root {
+  --box-size-default: 300px;
+}
 .box {
-  --size: 300px;
   position: relative;
   display: flex;
   border-radius: $border-radius;
   width: 100%;
-  max-width: var(--size);
-  min-height: var(--size);
+  max-width: var(--box-size, var(--box-size-default));
+  min-height: var(--box-size, var(--box-size-default));
   margin: 1.1rem;
 }
 .round {
@@ -49,7 +51,8 @@
     opacity: 1;
     @include pushed-shadow;
   }
-  &.active, &:hover {
+  &.active,
+  &:hover {
     &:before {
       opacity: 1;
     }
@@ -72,7 +75,8 @@
     opacity: 0;
     @include pushed-shadow;
   }
-  &.active, &:hover {
+  &.active,
+  &:hover {
     &:before {
       opacity: 1;
     }

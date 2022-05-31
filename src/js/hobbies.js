@@ -6,7 +6,11 @@ import { hobbies } from '../data/hobbies';
 export const renderHobbies = (container) => {
   hobbies.forEach((hobby) => {
     const $hobby = document.createElement('div');
-    $hobby.classList.add('.box');
+    const $hobbyText = document.createElement('h4');
+    $hobbyText.innerText = hobby;
+
+    ['box', 'center', 'frame'].forEach((cls) => $hobby.classList.add(cls));
+    $hobby.appendChild($hobbyText);
     container.appendChild($hobby);
   });
 };

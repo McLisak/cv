@@ -13,8 +13,10 @@ const renderProject = ({ project, fullDescription }) => {
   return `
   <div class="slide">
     <h3>${project.name}</h3>
-    <div class="slide-content">
-      <p>${fullDescription ? project.description || project.short : project.short}</p>
+    <div class="slide-content-container">
+      <div class="slide-content">
+        ${fullDescription && project.description ? project.description : `<p>${project.short}</p>`}
+      </div>
     </div>
     <div class="row center">
       ${renderSkills(project.skills)}

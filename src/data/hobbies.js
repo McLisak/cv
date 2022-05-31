@@ -5,7 +5,7 @@ export const hobbies = [
   'guitar',
   'drums',
   'gadgets',
-  'MP video games',
   'family',
+  'mp video games',
   'friends',
 ];
