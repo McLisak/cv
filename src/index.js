@@ -23,25 +23,50 @@ class Page {
     this.portfolioLightboxSlider = new Slider(portfolioLightbox);
     this.portfolioLightbox = new Lightbox({
       container: document.getElementById('portfolio-lightbox'),
-      openButtons: document.querySelectorAll('button[data-lightbox="portfolio-lightbox"]'),
+      openButtons: document.querySelectorAll('[data-lightbox="portfolio-lightbox"]'),
     });
+    this._handlePortfolioLinks();
     this._syncPortfolioSliders();
+  }
+
+  _handlePortfolioLinks() {
+    const $links = Array.from(document.getElementsByClassName('portfolio-link'));
+    if (!$links.length) return;
+    $links.forEach(($link) => {
+      $link.addEventListener('click', () => {
+        const slideName = $link.dataset.portfolioSlide;
+        const { $slides } = this.portfolioLightboxSlider;
+        const $newActiveSlide = $slides.find(($slide) => $slide.dataset.name === slideName);
+        if (!$newActiveSlide) {
+          return console.error(
+            'Portfolio Link: Whoops! Did not find a matching slide :(',
+            slideName
+          );
+        }
+        this.portfolioLightboxSlider.scrollTo($newActiveSlide, { duration: 1 });
+      });
+    });
   }
 
   _syncPortfolioSliders() {
     this.portfolioLightbox.onOpen.push(() => {
-      const activeSlideIndex = this.portfolioSlider.slides.indexOf(
-        this.portfolioSlider.activeSlide
+      const activeSlideIndex = this.portfolioSlider.$slides.indexOf(
+        this.portfolioSlider.$activeSlide
       );
-      this.portfolioLightboxSlider.scrollTo(this.portfolioLightboxSlider.slides[activeSlideIndex], {
-        duration: 1,
-      });
+      this.portfolioLightboxSlider.scrollTo(
+        this.portfolioLightboxSlider.$slides[activeSlideIndex],
+        {
+          duration: 1,
+        }
+      );
     });
     this.portfolioLightbox.onClose.push(() => {
-      const activeSlideIndex = this.portfolioLightboxSlider.slides.indexOf(
-        this.portfolioLightboxSlider.activeSlide
+      const activeSlideIndex = this.portfolioLightboxSlider.$slides.indexOf(
+        this.portfolioLightboxSlider.$activeSlide
       );
-      this.portfolioSlider.scrollTo(this.portfolioSlider.slides[activeSlideIndex], { duration: 1 });
+      this.portfolioSlider.scrollTo(this.portfolioSlider.$slides[activeSlideIndex], {
+        duration: 1,
+      });
     });
   }
 

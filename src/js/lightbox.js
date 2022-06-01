@@ -24,20 +24,20 @@ export class Lightbox {
 
   /**
    *
-   * @param {HTMLElement[]} buttons
+   * @param {HTMLElement[]} $buttons
    */
-  _addOpenListeners(buttons) {
-    buttons.forEach((button) => button.addEventListener('click', this.open.bind(this)));
+  _addOpenListeners($buttons) {
+    $buttons.forEach(($button) => $button.addEventListener('click', this.open.bind(this)));
   }
   /**
    *
-   * @param {HTMLElement} container
+   * @param {HTMLElement} $container
    */
-  _createCloseButton(container) {
-    const button = document.createElement('button');
-    button.classList.add('lightbox-close');
-    button.addEventListener('click', this.close.bind(this));
-    container.append(button);
+  _createCloseButton($container) {
+    const $button = document.createElement('button');
+    $button.classList.add('lightbox-close');
+    $button.addEventListener('click', this.close.bind(this));
+    $container.append($button);
   }
 
   _addKeyboardClose() {

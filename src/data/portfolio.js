@@ -32,6 +32,12 @@ export default {
     description: d.vaf,
     skills: ['ts', 'vue', 'css', 'ima', 'vast', 'webpack'],
   },
+  spieler: {
+    name: 'Spieler',
+    short: 'asdf',
+    description: 'asdf',
+    skills: ['js', 'webpack', 'ima', 'vast', 'css'],
+  },
   cv: {
     name: 'CV',
     short: 'This page :D',

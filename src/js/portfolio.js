@@ -1,5 +1,4 @@
 import portfolioData from '../data/portfolio';
-import skills from './skills';
 
 const renderSkills = (skills = []) => {
   let result = '';
@@ -9,9 +8,9 @@ const renderSkills = (skills = []) => {
   return result;
 };
 
-const renderProject = ({ project, fullDescription }) => {
+const renderProject = ({ project, projectKey, fullDescription }) => {
   return `
-  <div class="slide">
+  <div class="slide" data-name=${projectKey}>
     <h3>${project.name}</h3>
     <div class="slide-content-container">
       <div class="slide-content">
@@ -31,8 +30,9 @@ const renderProject = ({ project, fullDescription }) => {
  */
 export const renderPortfolio = ({ container, fullDescription = false }) => {
   let projectsHtmls = '';
-  Object.values(portfolioData).forEach((project) => {
-    projectsHtmls += renderProject({ project, fullDescription });
+  Object.keys(portfolioData).forEach((projectKey) => {
+    const project = portfolioData[projectKey];
+    projectsHtmls += renderProject({ project, projectKey, fullDescription });
   });
   const portfolioHTML = `
   <div class="slides">

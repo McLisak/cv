@@ -4,7 +4,7 @@ export class StickyObserver {
    */
   constructor(elements) {
     this.callbacks = [];
-    this.elements = Array.from(elements);
+    this.$elements = Array.from(elements);
     this.observer = new IntersectionObserver((entries) => this._observerCallback(entries), {
       threshold: 1,
     });
@@ -16,11 +16,11 @@ export class StickyObserver {
   }
 
   _createSpyElements() {
-    this.elements.forEach((element, index) => {
-      const spyElement = document.createElement('div');
-      spyElement.classList.add('sticky-spy');
-      element.prepend(spyElement);
-      this.observer.observe(spyElement);
+    this.$elements.forEach(($element) => {
+      const $spyElement = document.createElement('div');
+      $spyElement.classList.add('sticky-spy');
+      $element.prepend($spyElement);
+      this.observer.observe($spyElement);
     });
   }
 
