@@ -6,6 +6,7 @@ import { Slider } from './js/slider';
 import { StickyObserver } from './js/sticky-observer';
 import { renderHobbies } from './js/hobbies';
 import { skills } from './js/skills';
+import { css } from './js/utils';
 
 class Page {
   constructor() {
@@ -86,8 +87,7 @@ class Page {
     const $skillsContainer = document.getElementById('skills-container');
     skills.forEach((skillName) => {
       const $skill = document.createElement('div');
-      $skill.classList.add('skill');
-      $skill.classList.add(`skill-${skillName}`);
+      css.addClasses($skill, `skill skill-${skillName}`);
       $skillsContainer.appendChild($skill);
     });
   }
