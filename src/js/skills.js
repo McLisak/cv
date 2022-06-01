@@ -8,6 +8,7 @@ export const skills = [
   'webpack',
   'parcel',
   'nodejs',
+  'gha',
   'gpt',
   'ima',
   'gam',

@@ -12,6 +12,7 @@
     'ts scss'
     'njs vue'
     'rct vue'
+    'rct gha'
     'wbp wbp'
     'prcl gpt'
     'ima gam'
@@ -201,6 +202,13 @@
       content: 'AWS';
     }
   }
+  &-gha {
+    grid-area: gha;
+    background: linear-gradient($light-angle, #db469f, #2188ff);
+    &::after {
+      content: 'GHA';
+    }
+  }
 }
 
 @include screen(s) {
@@ -212,8 +220,9 @@
       'scss css css'
       'vue prcl njs'
       'vue wbp wbp'
-      'rct ima gpt '
-      'aws vast gam';
+      'gha gha rct'
+      'aws vast rct'
+      'ima gpt gam';
   }
 }
 
@@ -222,13 +231,12 @@
     --size: 160px;
     --col: 4;
     grid-template-areas:
-    'js js css scss'
-    'js js css vue'
-    'ts ts rct vue'
-    'prcl wbp wbp njs'
-    'gpt gam ima ima'
-    '. aws vast .'
-    ;
+      'js js css scss'
+      'js js css vue'
+      'rct ts ts vue'
+      'rct wbp wbp gha'
+      'prcl njs gpt gam'
+      'aws njs vast ima';
   }
 }
 

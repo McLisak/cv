@@ -5,11 +5,13 @@ import { Lightbox } from './js/lightbox';
 import { Slider } from './js/slider';
 import { StickyObserver } from './js/sticky-observer';
 import { renderHobbies } from './js/hobbies';
+import { skills } from './js/skills';
 
 class Page {
   constructor() {
     this._createPortfolio();
     this._spySectionTitles();
+    this._renderSkills();
     this._renderHobbies();
     this.nav = new Nav();
   }
@@ -76,6 +78,16 @@ class Page {
       window.requestAnimationFrame(() => {
         element.classList[sticks ? 'add' : 'remove']('sticks');
       });
+    });
+  }
+
+  _renderSkills() {
+    const $skillsContainer = document.getElementById('skills-container');
+    skills.forEach((skillName) => {
+      const $skill = document.createElement('div');
+      $skill.classList.add('skill');
+      $skill.classList.add(`skill-${skillName}`);
+      $skillsContainer.appendChild($skill);
     });
   }
 
