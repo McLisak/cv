@@ -13,6 +13,7 @@ class Page {
     this._spySectionTitles();
     this._renderSkills();
     this._renderHobbies();
+    this._scrollReminder();
     this.nav = new Nav();
   }
 
@@ -93,6 +94,20 @@ class Page {
 
   _renderHobbies() {
     renderHobbies(document.getElementById('hobbies-container'));
+  }
+
+  _scrollReminder() {
+    const $scrollReminder = document.getElementById('scroll-reminder');
+    if (!$scrollReminder) return;
+    const timeout = window.setTimeout(() => {
+      $scrollReminder.classList.add('visible');
+    }, 2500);
+    const onScroll = () => {
+      window.clearTimeout(timeout);
+      $scrollReminder.classList.remove('visible');
+      window.removeEventListener('scroll', onScroll);
+    };
+    window.addEventListener('scroll', onScroll);
   }
 }
 

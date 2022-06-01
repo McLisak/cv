@@ -198,8 +198,8 @@ $ambient-shadow-map: (
 }
 
 // Beziers
-$cubic-out-cubic: cubic-bezier(0.215, 0.61, 0.355, 1);
-$cubic-in-cubic: cubic-bezier(0.55, 0.055, 0.675, 0.19);
+$bezier-out-cubic: cubic-bezier(0.215, 0.61, 0.355, 1);
+$bezier-in-cubic: cubic-bezier(0.55, 0.055, 0.675, 0.19);
 
 // pseudo classes
 %pseudo-cover {

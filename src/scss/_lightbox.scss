@@ -18,9 +18,9 @@ body.lightbox-open {
   pointer-events: none;
   opacity: 0;
   transform: translateY(80%);
-  transition: transform 300ms $cubic-in-cubic, opacity 250ms $cubic-in-cubic;
+  transition: transform 300ms $bezier-in-cubic, opacity 250ms $bezier-in-cubic;
   &.active {
-    transition: transform 300ms $cubic-out-cubic, opacity 250ms $cubic-out-cubic;
+    transition: transform 300ms $bezier-out-cubic, opacity 250ms $bezier-out-cubic;
     opacity: 1;
     transform: translateY(0);
     pointer-events: all;

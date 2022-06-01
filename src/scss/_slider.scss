@@ -103,7 +103,7 @@
     @include elevation(10);
 
     transform: scale(1);
-    transition: transform 300ms $cubic-out-cubic, background 300ms $cubic-out-cubic cub;
+    transition: transform 300ms $bezier-out-cubic, background 300ms $bezier-out-cubic cub;
     &:after {
       content: '';
       width: 8px;

@@ -1,0 +1,78 @@
+#hi-section {
+  &-greet {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    opacity: 1;
+    transform: scale(1) translate(-50%, -50%);
+    pointer-events: none;
+    animation: greetOut 350ms 800ms $bezier-in-cubic forwards;
+  }
+  &-name {
+    opacity: 0;
+    transform: translateY(-3em);
+    animation: appearY 350ms 1200ms $bezier-out-cubic forwards;
+  }
+  &-avatar {
+    opacity: 0;
+    transform: translateY(100%);
+    animation: appearY 500ms 1200ms $bezier-out-cubic forwards;
+  }
+}
+
+#scroll-reminder {
+  position: fixed;
+  pointer-events: none;
+  bottom: $nav-height + 10px;
+  text-align: center;
+  opacity: 0;
+  transition: opacity 300ms ease;
+  &.visible {
+    opacity: 1;
+  }
+  &-arrow {
+    position: relative;
+    height: 2rem;
+    font-size: 1.4em;
+    animation: pulsateY 1s ease-in-out both infinite;
+
+    &::before, &::after {
+      content: '';
+      position: absolute;
+      height: 100%;
+      width: 1px;
+      background: white;
+    }
+    &::before {
+      transform: translateX(-.5em) rotate(-45deg);
+    }
+    &::after {
+      transform: translateX(.5em) rotate(45deg);
+    }
+  }
+}
+
+@keyframes appearY {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes greetOut {
+  to {
+    opacity: 0;
+    transform: translate(-50%, -50vh);
+  }
+}
+
+@keyframes pulsateY {
+  33% {
+    opacity: 0.6;
+    transform: translateY(-33%);
+  }
+  66%{
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

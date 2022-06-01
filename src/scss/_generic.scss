@@ -73,6 +73,9 @@ h4 {
   width: 100%;
   display: flex;
   justify-content: center;
+  &-column {
+    flex-direction: column;
+  }
 }
 
 button {
@@ -88,7 +91,7 @@ button {
   margin: 1em 0.5em;
   text-transform: uppercase;
   transform-origin: center;
-  transition: transform 125ms $cubic-out-cubic;
+  transition: transform 125ms $bezier-out-cubic;
   &:focus {
     transform: scale(1.05);
     color: var(--color-primary);
@@ -123,7 +126,7 @@ button {
   align-items: center;
   justify-content: center;
   z-index: 2;
-  transition: transform 250ms $cubic-out-cubic;
+  transition: transform 250ms $bezier-out-cubic;
   transform: scale(1);
   transform-origin: top center;
   &:before {
@@ -135,7 +138,7 @@ button {
     right: -50%;
     @include elevation(10);
     opacity: 0;
-    transition: opacity 300ms $cubic-out-cubic;
+    transition: opacity 300ms $bezier-out-cubic;
     background: var(--color-bg);
     z-index: -1;
   }
@@ -192,7 +195,7 @@ a {
   color: $color-primary;
   transition: color 250ms ease;
   cursor: pointer;
-  &:hover{
+  &:hover {
     color: lighten($color-primary, 20);
   }
 }
