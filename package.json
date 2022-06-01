@@ -27,11 +27,9 @@
     "eslint-plugin-prettier": "^3.1.2",
     "parcel": "^1.12.4",
     "prettier": "^1.19.1",
-    "sass": "^1.25.0",
-    "scrollmagic": "^2.0.7"
+    "sass": "^1.25.0"
   },
   "dependencies": {
-    "animejs": "^3.1.0",
     "babel-eslint": "^10.0.3",
     "ie-buster": "git+https://github.com/McLisak/ie-buster.git",
     "smooth-scroll-into-view-if-needed": "^1.1.27"
