@@ -1,6 +1,7 @@
 // export { default as cte } from './cte';
 export { default as cv } from './cv';
 export { default as dux } from './dux';
+export { default as fizykaKursy } from './fizykaKursy';
 export { default as landingpageManager } from './landingpageManager';
 export { default as platformOnboarding } from './platformOnboarding';
 export { default as spieler } from './spieler';

@@ -55,8 +55,15 @@ export default {
   },
   cv: {
     name: 'CV',
-    short: 'This page :D',
+    short: 'This page 😀',
     description: d.cv,
     skills: ['js', 'scss', 'parcel'],
+  },
+  fizykaKursy: {
+    name: 'fizyka-kursy.pl',
+    short:
+      'An online course store. First big, fullstack project I implemented mostly on my own, asking my co-worker / mentor for advices during development.',
+    description: d.fizykaKursy,
+    skills: ['js', 'css'],
   },
 };
