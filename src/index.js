@@ -39,7 +39,12 @@ class Page {
     $links.forEach(($link) => {
       $link.addEventListener('click', () => {
         const slideName = $link.dataset.portfolioSlide;
-        const { $slides } = this.portfolioLightboxSlider;
+        const duration = $link.dataset.slideDuration === 'null' ? null : 1;
+        const $slider =
+          $link.dataset.portfolioSlider === 'short'
+            ? this.portfolioSlider
+            : this.portfolioLightboxSlider;
+        const { $slides } = $slider;
         const $newActiveSlide = $slides.find(($slide) => $slide.dataset.name === slideName);
         if (!$newActiveSlide) {
           return console.error(
@@ -47,7 +52,7 @@ class Page {
             slideName
           );
         }
-        this.portfolioLightboxSlider.scrollTo($newActiveSlide, { duration: 1 });
+        $slider.scrollTo($newActiveSlide, { duration });
       });
     });
   }
