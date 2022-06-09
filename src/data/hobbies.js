@@ -1,5 +1,7 @@
 export const hobbies = [
   'js',
+  'css',
+  'coding',
   'music',
   'music production',
   'guitar',

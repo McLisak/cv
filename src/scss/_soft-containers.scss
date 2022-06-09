@@ -96,6 +96,7 @@
 .frame {
   z-index: 1;
   border: 20px solid var(--color-bg);
+  position: relative;
   @include frame-shadow;
 }
 

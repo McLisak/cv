@@ -1,11 +1,12 @@
 body.lightbox-open {
   overflow: hidden;
+  padding-right: $scrollbar-width;
 }
 .lightbox {
   position: fixed;
   top: 0;
   left: 0;
-  width: 100vw;
+  right: -$scrollbar-width;
   height: 100vh;
   padding: 0.9em 1em;
   background: var(--color-bg);
@@ -16,12 +17,14 @@ body.lightbox-open {
   z-index: 10;
 
   pointer-events: none;
-  opacity: 0;
-  transform: translateY(80%);
-  transition: transform 300ms $bezier-in-cubic, opacity 250ms $bezier-in-cubic;
+  visibility: hidden;
+  transform: translateY(100%);
+  transition: transform 300ms $bezier-in-cubic, visibility 0ms 300ms;
+  will-change: transform;
   &.active {
-    transition: transform 300ms $bezier-out-cubic, opacity 250ms $bezier-out-cubic;
-    opacity: 1;
+    visibility: visible;
+    transition: transform 300ms $bezier-out-cubic, visibility 0ms;
+    right: 0;
     transform: translateY(0);
     pointer-events: all;
   }

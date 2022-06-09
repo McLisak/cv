@@ -4,7 +4,7 @@ export class StickyObserver {
    */
   constructor(elements) {
     this.callbacks = [];
-    this.$elements = Array.from(elements);
+    this.$elements = Array.isArray(elements) ? elements : Array.from(elements);
     this.observer = new IntersectionObserver((entries) => this._observerCallback(entries), {
       threshold: 1,
     });

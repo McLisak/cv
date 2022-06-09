@@ -36,7 +36,7 @@
   &:after {
     letter-spacing: -1px;
     font-size: 100%;
-    @include text-shadow(1);
+    @include text-shadow(2);
     text-align: center;
   }
   &-mini {

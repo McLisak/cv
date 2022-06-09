@@ -3,6 +3,7 @@
 $color-bg: #203a44;
 $color-primary: #ec7d16;
 $color-scrollbar: #3c5f6d;
+$scrollbar-width: 5px;
 
 // Shadows
 @function pulled-shadow($x, $y) {
@@ -26,7 +27,18 @@ $pushed-shadow: pushed-shadow(3, 4);
   box-shadow: $pushed-shadow;
 }
 @mixin frame-shadow {
-  box-shadow: $pulled-shadow, $pushed-shadow;
+  box-shadow: $pulled-shadow;
+  &::after {
+    content: '';
+    pointer-events: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    border-radius: inherit;
+    box-shadow: $pushed-shadow;
+  }
 }
 
 $inset-shadow: inset 3px 3px 6px rgba(black, 0.4), inset 5px 5px 6px rgba(black, 0.2),
@@ -64,7 +76,7 @@ $light-angle: 145deg;
 }
 
 $key-shadow-umbra-colour: rgba(black, 0.1);
-$key-shadow-penumbra-colour: rgba(black, 0.15);
+$key-shadow-penumbra-colour: rgba(black, 0.2);
 $ambient-shadow-colour: rgba(black, 0.33);
 
 $key-shadow-umbra-map: (

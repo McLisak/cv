@@ -1,22 +1,23 @@
 #hi-section {
+  $animation-speed: 400ms;
   &-greet {
     position: absolute;
     top: 50%;
     left: 50%;
     opacity: 1;
-    transform: scale(1) translate(-50%, -50%);
+    transform: translate(-50%, -50%) scale(1);
     pointer-events: none;
-    animation: greetOut 350ms 800ms $bezier-in-cubic forwards;
+    animation: greetOut $animation-speed $animation-speed*2 $bezier-in-cubic forwards;
   }
   &-name {
     opacity: 0;
     transform: translateY(-3em);
-    animation: appearY 350ms 1200ms $bezier-out-cubic forwards;
+    animation: appearY $animation-speed $animation-speed*3 $bezier-out-cubic forwards;
   }
   &-avatar {
     opacity: 0;
     transform: translateY(100%);
-    animation: appearY 500ms 1200ms $bezier-out-cubic forwards;
+    animation: appearY $animation-speed*1.2 $animation-speed*3 $bezier-out-cubic forwards;
   }
 }
 
@@ -62,7 +63,7 @@
 @keyframes greetOut {
   to {
     opacity: 0;
-    transform: translate(-50%, -50vh);
+    transform: translate(-50%, -50vh) scale(0.3);
   }
 }
 

@@ -24,6 +24,8 @@
   // transform: translate3d(0, 0, -5px) scale(2);
 
   img {
+    display: unset;
+    max-width: unset;
     width: calc(var(--size) + 20px);
     height: auto;
     position: absolute;
