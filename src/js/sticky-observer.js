@@ -1,20 +1,29 @@
+import { forceArray } from './utils';
+
 export class StickyObserver {
   /**
-   * @param {HTMLElement} element
+   * @param {NodeList | HTMLElement[]} $elements
    */
-  constructor(elements) {
+  constructor($elements) {
     this.callbacks = [];
-    this.$elements = Array.isArray(elements) ? elements : Array.from(elements);
+    this.$elements = forceArray($elements);
     this.observer = new IntersectionObserver((entries) => this._observerCallback(entries), {
       threshold: 1,
     });
     this._createSpyElements();
   }
-
-  runCallbacks(sticks, element) {
-    this.callbacks.forEach((cb) => cb(sticks, element));
+  /**
+   * @private
+   * @param {boolean} sticks
+   * @param {HTMLElement} $element
+   */
+  _runCallbacks(sticks, $element) {
+    this.callbacks.forEach((cb) => cb(sticks, $element));
   }
 
+  /**
+   * @private
+   */
   _createSpyElements() {
     this.$elements.forEach(($element) => {
       const $spyElement = document.createElement('div');
@@ -25,15 +34,16 @@ export class StickyObserver {
   }
 
   /**
+   * @private
    * @param {IntersectionObserverEntry[]} entries
    */
   _observerCallback(entries) {
     entries.forEach((entry) => {
       const { boundingClientRect, isIntersecting, target } = entry;
       if (!isIntersecting && boundingClientRect.top < 1) {
-        this.runCallbacks(true, target.parentNode);
+        this._runCallbacks(true, target.parentNode);
       } else {
-        this.runCallbacks(false, target.parentNode);
+        this._runCallbacks(false, target.parentNode);
       }
     });
   }

@@ -1,17 +1,32 @@
 import * as d from './portfolios';
 
 export default {
-  // TODO: add recent activities
+  // TODO: Work on descriptions
   tvAuth: {
-    name: 'auth-tv-chapter',
-    short: 'asdf',
+    name: 'Auth TV Chapter',
+    short: 'Authorization front-end in DAZN Living Room App.',
     description: d.tvAuth,
-    skills: ['react', 'ts', 'webpack', 'aws'],
+    skills: ['react', 'ts', 'webpack', 'gha', 'aws'],
   },
-  // tvLandingpage: {},
-  // landingpageManager: {},
-  // optimizely: {},
-  // platformOnboarding: {},
+  tvLandingpage: {
+    name: 'Landingpage TV Chapter ',
+    short: 'Landing page front-end in DAZN Living Room App.',
+    description: d.tvLandingpage,
+    skills: ['js', 'webpack', 'gha'],
+  },
+  landingpageManager: {
+    name: 'Landingpage Manager',
+    short: 'A full-stack total rebuild of DAZN living room landingpages CMS.',
+    description: d.landingpageManager,
+    skills: ['ts', 'react', 'aws', 'nodejs', 'gha', 'webpack'],
+  },
+  platformOnboarding: {
+    name: 'Platforms Onboarding',
+    short:
+      'Preparing whole DAZN App for releasing on new platforms and migrate from legacy app on supported platforms.',
+    description: d.landingpageManager,
+    skills: ['ts', 'react', 'aws', 'nodejs', 'gha', 'webpack'],
+  },
   dux: {
     name: 'DUX',
     short:
@@ -35,7 +50,7 @@ export default {
   spieler: {
     name: 'Spieler',
     short: 'asdf',
-    description: 'asdf',
+    description: d.spieler,
     skills: ['js', 'webpack', 'ima', 'vast', 'css'],
   },
   cv: {

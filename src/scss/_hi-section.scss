@@ -5,19 +5,19 @@
     top: 50%;
     left: 50%;
     opacity: 1;
-    transform: translate(-50%, -50%) scale(1);
+    transform: translate(-50%, -50%);
     pointer-events: none;
-    animation: greetOut $animation-speed $animation-speed*2 $bezier-in-cubic forwards;
+    animation: greet $animation-speed * 4 ease-in-out forwards;
   }
   &-name {
     opacity: 0;
     transform: translateY(-3em);
-    animation: appearY $animation-speed $animation-speed*3 $bezier-out-cubic forwards;
+    animation: appearY $animation-speed $animation-speed * 4 $bezier-out-cubic forwards;
   }
   &-avatar {
     opacity: 0;
     transform: translateY(100%);
-    animation: appearY $animation-speed*1.2 $animation-speed*3 $bezier-out-cubic forwards;
+    animation: appearY $animation-speed * 1.2 $animation-speed * 3.5 $bezier-out-cubic forwards;
   }
 }
 
@@ -37,7 +37,8 @@
     font-size: 1.4em;
     animation: pulsateY 1s ease-in-out both infinite;
 
-    &::before, &::after {
+    &::before,
+    &::after {
       content: '';
       position: absolute;
       height: 100%;
@@ -45,10 +46,10 @@
       background: white;
     }
     &::before {
-      transform: translateX(-.5em) rotate(-45deg);
+      transform: translateX(-0.5em) rotate(-45deg);
     }
     &::after {
-      transform: translateX(.5em) rotate(45deg);
+      transform: translateX(0.5em) rotate(45deg);
     }
   }
 }
@@ -60,10 +61,22 @@
   }
 }
 
-@keyframes greetOut {
+@keyframes greet {
+  from {
+    opacity: 0;
+    transform: translate(-50%, 50vh);
+  }
+  25% {
+    opacity: 1;
+    transform: translate(-50%, -50%);
+  }
+  75% {
+    opacity: 1;
+    transform: translate(-50%, -50%);
+  }
   to {
     opacity: 0;
-    transform: translate(-50%, -50vh) scale(0.3);
+    transform: translate(-50%, -50vh);
   }
 }
 
@@ -72,7 +85,7 @@
     opacity: 0.6;
     transform: translateY(-33%);
   }
-  66%{
+  66% {
     opacity: 1;
     transform: translateY(0);
   }

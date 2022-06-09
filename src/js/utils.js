@@ -1,3 +1,7 @@
+/**
+ * @typedef {number|string|boolean|null|undefined|} Primitive
+ */
+
 export function debounce(fn, time) {
   let timeout = null;
   return (...args) => {
@@ -6,6 +10,14 @@ export function debounce(fn, time) {
     timeout = setTimeout(call, time);
   };
 }
+/**
+ * TODO: How to inherit the items type from param to get intellisense?!
+ * @param {ArrayLike<any>} arr
+ * @returns {Array<any>}
+ */
+export const forceArray = (arr) => {
+  return Array.isArray(arr) ? arr : Array.from(arr);
+};
 
 export const css = {
   /**

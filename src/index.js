@@ -5,7 +5,7 @@ import { Lightbox } from './js/lightbox';
 import { Slider } from './js/slider';
 import { StickyObserver } from './js/sticky-observer';
 import { renderHobbies } from './js/hobbies';
-import { skills } from './js/skills';
+import { skills } from './data/skills';
 import { css } from './js/utils';
 
 class Page {
@@ -19,12 +19,12 @@ class Page {
   }
 
   _createPortfolio() {
-    const portfolio = document.getElementById('portfolio-slider');
-    const portfolioLightbox = document.getElementById('portfolio-lightbox-slider');
-    renderPortfolio({ container: portfolio });
-    renderPortfolio({ container: portfolioLightbox, fullDescription: true });
-    this.portfolioSlider = new Slider(portfolio);
-    this.portfolioLightboxSlider = new Slider(portfolioLightbox);
+    const $portfolio = document.getElementById('portfolio-slider');
+    const $portfolioLightbox = document.getElementById('portfolio-lightbox-slider');
+    renderPortfolio({ container: $portfolio });
+    renderPortfolio({ container: $portfolioLightbox, fullDescription: true });
+    this.portfolioSlider = new Slider($portfolio);
+    this.portfolioLightboxSlider = new Slider($portfolioLightbox);
     this.portfolioLightbox = new Lightbox({
       container: document.getElementById('portfolio-lightbox'),
       openButtons: document.querySelectorAll('[data-lightbox="portfolio-lightbox"]'),

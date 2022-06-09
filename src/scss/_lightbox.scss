@@ -2,6 +2,7 @@ body.lightbox-open {
   overflow: hidden;
   padding-right: $scrollbar-width;
 }
+// TODO: Find a fix for android chrome address bar cutting the 100vh :/
 .lightbox {
   position: fixed;
   top: 0;

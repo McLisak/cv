@@ -7,6 +7,10 @@ export const CONTROL_PREV_CLASS = 'prev';
 export const CONTROL_NEXT_CLASS = 'next';
 
 export class Slider {
+  /**
+   *
+   * @param {HTMLElement} $container
+   */
   constructor($container) {
     this.id = $container.id;
     this.$container = $container;
@@ -19,8 +23,14 @@ export class Slider {
     this._observeSlides($container);
   }
 
-  scrollTo(slide, options = {}) {
-    if (this._autoScrolling || slide === this.$activeSlide) return;
+  /**
+   *
+   * @param {HTMLElement} $slide
+   * @param {import('smooth-scroll-into-view-if-needed').SmoothBehaviorOptions} options
+   * @returns
+   */
+  scrollTo($slide, options = {}) {
+    if (this._autoScrolling || $slide === this.$activeSlide) return;
     const scrollOptions = {
       behavior: 'smooth',
       boundary: this.$slidesContainer,
@@ -33,29 +43,32 @@ export class Slider {
     this.$slidesContainer.style.scrollSnapType = 'none';
     this._autoScrolling = true;
 
-    scrollIntoView(slide, scrollOptions).then(() => {
+    scrollIntoView($slide, scrollOptions).then(() => {
       this.$slidesContainer.style.scrollSnapType = '';
       this._autoScrolling = false;
     });
   }
 
   /**
-   *
-   * @param {HTMLElement} container
+   * @private
+   * @param {HTMLElement} $container
    */
-  _createControls(container) {
-    const prev = document.createElement('div');
-    const next = document.createElement('div');
+  _createControls($container) {
+    const $prev = document.createElement('div');
+    const $next = document.createElement('div');
 
-    this.controls = { prev, next };
-    this._addControlListeners(container);
+    this.controls = { $prev, $next };
+    this._addControlListeners($container);
 
-    container.appendChild(prev);
-    container.appendChild(next);
-    prev.classList.add(CONTROL_CLASS, CONTROL_PREV_CLASS);
-    next.classList.add(CONTROL_CLASS, CONTROL_NEXT_CLASS);
+    $container.appendChild($prev);
+    $container.appendChild($next);
+    $prev.classList.add(CONTROL_CLASS, CONTROL_PREV_CLASS);
+    $next.classList.add(CONTROL_CLASS, CONTROL_NEXT_CLASS);
   }
 
+  /**
+   * @private
+   */
   _addControlListeners() {
     const prevClick = () => {
       let prevIndex = this.$slides.indexOf(this.$activeSlide) - 1;
@@ -71,11 +84,12 @@ export class Slider {
       }
       this.scrollTo(this.$slides[nextIndex]);
     };
-    this.controls.prev.addEventListener('click', prevClick);
-    this.controls.next.addEventListener('click', nextClick);
+    this.controls.$prev.addEventListener('click', prevClick);
+    this.controls.$next.addEventListener('click', nextClick);
   }
 
   /**
+   * @private
    * @param {HTMLElement} slider
    */
   _observeSlides(slider) {
@@ -87,6 +101,10 @@ export class Slider {
     this.$slides.forEach((slide) => this.observer.observe(slide));
   }
 
+  /**
+   * @private
+   * @param {IntersectionObserverEntry[]} entries
+   */
   _observerCallback(entries) {
     const activeSlide = entries.find(({ isIntersecting }) => isIntersecting);
     if (activeSlide) {
@@ -94,9 +112,13 @@ export class Slider {
     }
   }
 
-  _createShadows(container) {
-    const shadows = document.createElement('div');
-    shadows.classList.add('slider-shadows');
-    container.appendChild(shadows);
+  /**
+   * @private
+   * @param {HTMLElement} $container
+   */
+  _createShadows($container) {
+    const $shadows = document.createElement('div');
+    $shadows.classList.add('slider-shadows');
+    $container.appendChild($shadows);
   }
 }

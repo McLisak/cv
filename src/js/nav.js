@@ -21,6 +21,11 @@ export class Nav {
     });
   }
 
+  /**
+   *
+   * @param {HTMLElement} $section
+   * @param {import('smooth-scroll-into-view-if-needed').SmoothBehaviorOptions} options
+   */
   goToSection($section, options) {
     const defaultOptions = {
       scrollMode: 'always',
@@ -34,6 +39,9 @@ export class Nav {
     });
   }
 
+  /**
+   * @private
+   */
   _setupInteractivity() {
     this._debouncedNavScroll = debounce(($item) => {
       scrollIntoView($item, {
@@ -52,31 +60,42 @@ export class Nav {
     });
 
     this.$items.forEach(($item) => {
-      this.sectionObserver.observe($item.correspondingSection);
+      this.sectionObserver.observe($item.$correspondingSection);
       $item.addEventListener('click', ({ target }) =>
-        this.goToSection(target.correspondingSection)
+        this.goToSection(target.$correspondingSection)
       );
     });
   }
 
+  /**
+   * @private
+   * @param {HTMLElement} $section
+   */
   _createItem($section) {
     const $item = document.createElement('li');
-    $item.correspondingSection = $section;
-    $section.correspondingNavItem = $item;
+    $item.$correspondingSection = $section;
+    $section.$correspondingNavItem = $item;
     $item.setAttribute('name', ($item.innerText = $section.getAttribute('name')));
     this._addHoverEffect($item);
     this.$list.appendChild($item);
     return $item;
   }
 
+  /**
+   * @private
+   */
   _createItems() {
     return this.$sections.map(($section) => this._createItem($section));
   }
 
+  /**
+   * @private
+   * @param {IntersectionObserverEntry[]} entries
+   */
   _observeSections(entries) {
     entries.forEach((entry) => {
       const {
-        correspondingNavItem: $navItem,
+        $correspondingNavItem: $navItem,
         dataset: { path },
       } = entry.target;
       if (entry.isIntersecting) {
@@ -88,6 +107,10 @@ export class Nav {
     });
   }
 
+  /**
+   * @private
+   * @param {HTMLElement} $item
+   */
   _activateItem($item) {
     if (!$item) return;
     $item.classList.add(ACTIVE_CLASS);
@@ -95,11 +118,19 @@ export class Nav {
     this._debouncedNavScroll($item);
   }
 
+  /**
+   * @private
+   * @param {HTMLElement} $item
+   */
   _deactivateItem($item) {
     if (!$item) return;
     $item.classList.remove(ACTIVE_CLASS);
   }
 
+  /**
+   * @private
+   * @param {HTMLElement} $item
+   */
   _addHoverEffect($item) {
     $item.addEventListener('mouseenter', ({ target }) => {
       target.classList.add(HOVER_CLASS);
