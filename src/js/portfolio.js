@@ -1,4 +1,5 @@
 import portfolioData from '../data/portfolio';
+export const LS_ACTIVE_SLIDE_KEY = 'portfolio-active-slide';
 
 /**
  * @param {string[]} skills

@@ -10,17 +10,21 @@ export class Slider {
   /**
    *
    * @param {HTMLElement} $container
+   * @param {Object} options
+   * @param {string} options.lsSyncKey
    */
-  constructor($container) {
+  constructor($container, options = {}) {
     this.id = $container.id;
     this.$container = $container;
     this.$slidesContainer = $container.getElementsByClassName(SLIDES_CONTAINER_CLASS)[0];
     this.$slides = Array.from($container.getElementsByClassName(SLIDE_CLASS));
     this.$activeSlide = null;
     this._autoScrolling = false;
+    this.options = options;
     this._createShadows($container);
     this._createControls($container);
     this._observeSlides($container);
+    this._localStorageSync(options.lsSyncKey);
   }
 
   /**
@@ -43,7 +47,7 @@ export class Slider {
     this.$slidesContainer.style.scrollSnapType = 'none';
     this._autoScrolling = true;
 
-    scrollIntoView($slide, scrollOptions).then(() => {
+    return scrollIntoView($slide, scrollOptions).then(() => {
       this.$slidesContainer.style.scrollSnapType = '';
       this._autoScrolling = false;
     });
@@ -109,6 +113,8 @@ export class Slider {
     const activeSlide = entries.find(({ isIntersecting }) => isIntersecting);
     if (activeSlide) {
       this.$activeSlide = activeSlide.target;
+      if (!this.options.lsSyncKey) return;
+      localStorage.setItem(this.options.lsSyncKey, this.$slides.indexOf(this.$activeSlide));
     }
   }
 
@@ -120,5 +126,20 @@ export class Slider {
     const $shadows = document.createElement('div');
     $shadows.classList.add('slider-shadows');
     $container.appendChild($shadows);
+  }
+
+  /**
+   *
+   * @param {string} key
+   */
+  _localStorageSync(key) {
+    if (!key) return;
+    const lsSyncSlideIndex = Number(localStorage.getItem(key));
+    if (!Number.isInteger(lsSyncSlideIndex)) return;
+    if (this.$slides[lsSyncSlideIndex]) {
+      this.scrollTo(this.$slides[lsSyncSlideIndex], {
+        duration: 30,
+      });
+    }
   }
 }

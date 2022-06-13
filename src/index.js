@@ -1,6 +1,6 @@
 import { IEBuster } from 'ie-buster';
 import { Nav } from './js/nav';
-import { renderPortfolio } from './js/portfolio';
+import { LS_ACTIVE_SLIDE_KEY, renderPortfolio } from './js/portfolio';
 import { Lightbox } from './js/lightbox';
 import { Slider } from './js/slider';
 import { StickyObserver } from './js/sticky-observer';
@@ -23,8 +23,12 @@ class Page {
     const $portfolioLightbox = document.getElementById('portfolio-lightbox-slider');
     renderPortfolio({ container: $portfolio });
     renderPortfolio({ container: $portfolioLightbox, fullDescription: true });
-    this.portfolioSlider = new Slider($portfolio);
-    this.portfolioLightboxSlider = new Slider($portfolioLightbox);
+    this.portfolioSlider = new Slider($portfolio, {
+      lsSyncKey: LS_ACTIVE_SLIDE_KEY,
+    });
+    this.portfolioLightboxSlider = new Slider($portfolioLightbox, {
+      lsSyncKey: LS_ACTIVE_SLIDE_KEY,
+    });
     this.portfolioLightbox = new Lightbox({
       container: document.getElementById('portfolio-lightbox'),
       openButtons: document.querySelectorAll('[data-lightbox="portfolio-lightbox"]'),
