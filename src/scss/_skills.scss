@@ -8,15 +8,16 @@
   grid-template-areas:
     'js js'
     'js js'
-    'ts css'
+    'css css'
     'ts scss'
-    'njs vue'
+    'ts vue'
     'rct vue'
-    'rct gha'
+    'rct njs'
+    'gha gql'
     'wbp wbp'
-    'prcl gpt'
+    'prcl aws'
     'ima gam'
-    'vast aws';
+    'vast gpt';
   grid-gap: 1em;
   grid-auto-flow: dense;
   justify-content: center;
@@ -209,6 +210,13 @@
       content: 'GHA';
     }
   }
+  &-gql {
+    grid-area: gql;
+    background: linear-gradient($light-angle, lighten(#e00098, 10), darken(#e00098, 10));
+    &::after {
+      content: 'GQL';
+    }
+  }
 }
 
 @include screen(s) {
@@ -218,10 +226,10 @@
       'js js ts'
       'js js ts'
       'scss css css'
-      'vue prcl njs'
-      'vue wbp wbp'
-      'gha gha rct'
-      'aws vast rct'
+      'vue njs prcl'
+      'vue gql rct'
+      'wbp wbp rct'
+      'aws gha vast'
       'ima gpt gam';
   }
 }
@@ -234,9 +242,9 @@
       'js js css scss'
       'js js css vue'
       'rct ts ts vue'
-      'rct wbp wbp gha'
+      'rct gha wbp wbp'
       'prcl njs gpt gam'
-      'aws njs vast ima';
+      'aws gql vast ima';
   }
 }
 

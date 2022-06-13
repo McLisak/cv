@@ -1,4 +1,4 @@
-// export { default as cte } from './cte';
+export { default as cte } from './cte';
 export { default as cv } from './cv';
 export { default as dux } from './dux';
 export { default as fizykaKursy } from './fizykaKursy';

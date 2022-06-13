@@ -1,7 +1,6 @@
 import * as d from './portfolios';
 
 export default {
-  // TODO: Work on descriptions
   tvAuth: {
     name: 'Auth TV Chapter',
     short: 'Authorization front-end in DAZN Living Room App.',
@@ -18,14 +17,14 @@ export default {
     name: 'Landingpage Manager',
     short: 'A full-stack total rebuild of DAZN living room landingpages CMS.',
     description: d.landingpageManager,
-    skills: ['ts', 'react', 'aws', 'nodejs', 'gha', 'webpack'],
+    skills: ['ts', 'react', 'aws', 'nodejs', 'gql', 'gha', 'webpack'],
   },
   platformOnboarding: {
     name: 'Platforms Onboarding',
     short:
-      'Preparing whole DAZN App for releasing on new platforms and migrate from legacy app on supported platforms.',
-    description: d.landingpageManager,
-    skills: ['ts', 'react', 'aws', 'nodejs', 'gha', 'webpack'],
+      'Preparing whole DAZN App for release on new platforms and migrate from legacy app on supported platforms.',
+    description: d.platformOnboarding,
+    skills: ['js', 'css', 'webpack'],
   },
   dux: {
     name: 'DUX',
@@ -37,19 +36,19 @@ export default {
   cte: {
     name: 'CTE',
     short:
-      'Tool made to speed up workflow with Google Ad Manager Creative Template. Much quicker template manipulation, immediate preview, export to zip and other cool features.',
+      'An app made to speed up workflow with Google Ad Manager Creative Template. Much quicker template manipulation, immediate preview, export to zip and other cool features.',
     description: d.cte,
-    skills: ['js', 'nodejs', 'gam', 'react'],
+    skills: ['js', 'vue', 'nodejs', 'gam'],
   },
   vaf: {
     name: 'VAF',
     short: 'Video Ad Framework. Library that manages HTML5 Video Ads',
     description: d.vaf,
-    skills: ['ts', 'vue', 'css', 'ima', 'vast', 'webpack'],
+    skills: ['ts', 'css', 'ima', 'vast', 'webpack'],
   },
   spieler: {
     name: 'Spieler',
-    short: 'asdf',
+    short: 'A core video player used by different teams to build their players on top of it.',
     description: d.spieler,
     skills: ['js', 'webpack', 'ima', 'vast', 'css'],
   },
@@ -61,8 +60,7 @@ export default {
   },
   fizykaKursy: {
     name: 'fizyka-kursy.pl',
-    short:
-      'An online course store. First big, fullstack project I implemented mostly on my own, asking my co-worker / mentor for advices during development.',
+    short: 'An online course store. First big, fullstack project I implemented.',
     description: d.fizykaKursy,
     skills: ['js', 'css'],
   },
