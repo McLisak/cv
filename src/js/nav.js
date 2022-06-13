@@ -4,6 +4,8 @@ import { debounce } from './utils';
 const MAIN_ID = 'main-nav';
 const ACTIVE_CLASS = 'active';
 const HOVER_CLASS = 'hover';
+export const PUBLIC_URL = '/cv';
+
 export class Nav {
   constructor() {
     this.pathMap = {};
@@ -100,7 +102,8 @@ export class Nav {
       } = entry.target;
       if (entry.isIntersecting) {
         this._activateItem($navItem);
-        window.history.replaceState(path, '', path);
+        const newPath = PUBLIC_URL + path;
+        window.history.replaceState(newPath, '', newPath);
       } else {
         this._deactivateItem($navItem);
       }
