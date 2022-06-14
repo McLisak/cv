@@ -32,6 +32,6 @@
   "dependencies": {
     "babel-eslint": "^10.0.3",
     "ie-buster": "git+https://github.com/McLisak/ie-buster.git",
-    "smooth-scroll-into-view-if-needed": "^1.1.27"
+    "smooth-scroll-into-view-if-needed": "^1.1.33"
   }
 }

@@ -6,9 +6,26 @@
 * {
   box-sizing: border-box;
 }
+
+::-webkit-scrollbar {
+  width: $scrollbar-width;
+  height: $scrollbar-width;
+}
+::-webkit-scrollbar-thumb {
+  width: $scrollbar-width;
+  background: $color-scrollbar;
+  border-radius: $border-radius;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
 html {
   font-size: 14px;
+  scrollbar-color: $color-scrollbar transparent;
+  scrollbar-width: thin;
 }
+
 body {
   font-family: 'Poppins', Helvetica, Arial, sans-serif;
   color: whitesmoke;
@@ -113,19 +130,6 @@ button {
     color: var(--color-primary);
     outline: none;
   }
-}
-
-::-webkit-scrollbar {
-  width: $scrollbar-width;
-  height: $scrollbar-width;
-}
-::-webkit-scrollbar-thumb {
-  width: $scrollbar-width;
-  background: $color-scrollbar;
-  border-radius: $border-radius;
-}
-::-webkit-scrollbar-track {
-  background: transparent;
 }
 
 // This creates the classes for each elevation dp with numbers from 1 to 24
