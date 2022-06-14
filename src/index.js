@@ -6,10 +6,11 @@ import { Slider } from './js/slider';
 import { StickyObserver } from './js/sticky-observer';
 import { renderHobbies } from './js/hobbies';
 import { skills } from './data/skills';
-import { css } from './js/utils';
+import { getBrowser, css } from './js/utils';
 
 class Page {
   constructor() {
+    this._browser = getBrowser();
     this._createPortfolio();
     this._spySectionTitles();
     this._renderSkills();
@@ -25,9 +26,11 @@ class Page {
     renderPortfolio({ container: $portfolioLightbox, fullDescription: true });
     this.portfolioSlider = new Slider($portfolio, {
       lsSyncKey: LS_ACTIVE_SLIDE_KEY,
+      disableSnapOnScroll: this._browser !== 'Apple Safari',
     });
     this.portfolioLightboxSlider = new Slider($portfolioLightbox, {
       lsSyncKey: LS_ACTIVE_SLIDE_KEY,
+      disableSnapOnScroll: this._browser !== 'Apple Safari',
     });
     this.portfolioLightbox = new Lightbox({
       container: document.getElementById('portfolio-lightbox'),

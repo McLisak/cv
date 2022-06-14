@@ -33,7 +33,7 @@ section {
   justify-content: space-evenly;
   align-items: center;
   overflow-x: clip;
-  &:not(:first-of-type){
+  &:not(:first-of-type) {
     border-top: 1px solid lighten($color: $color-bg, $amount: 7);
   }
 }
@@ -143,6 +143,7 @@ button {
   justify-content: center;
   z-index: 2;
   transition: transform 250ms $bezier-out-cubic;
+  transition-delay: 75ms;
   transform: scale(1);
   transform-origin: top center;
   &:before {
@@ -150,18 +151,23 @@ button {
     position: absolute;
     top: 0;
     bottom: 0;
-    left: -50%;
-    right: -50%;
+    left: 0em;
+    right: 0em;
     @include elevation(10);
     opacity: 0;
-    transition: opacity 300ms $bezier-out-cubic;
+    transition: opacity 150ms $bezier-out-cubic;
+    transition-delay: 0ms;
     background: var(--color-bg);
+    border-radius: 0 0 $border-radius $border-radius;
     z-index: -1;
   }
   &.sticks {
-    transform: scale(0.7);
+    transition-delay: 0ms;
+    transform: scale(0.5);
     &:before {
       opacity: 1;
+      transition-delay: 75ms;
+      transition-duration: 300ms;
     }
   }
 }

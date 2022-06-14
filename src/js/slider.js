@@ -12,6 +12,7 @@ export class Slider {
    * @param {HTMLElement} $container
    * @param {Object} options
    * @param {string} options.lsSyncKey
+   * @param {boolean} options.disableSnapOnScroll
    */
   constructor($container, options = {}) {
     this.id = $container.id;
@@ -43,12 +44,16 @@ export class Slider {
       block: 'nearest',
       duration: options.duration || 300,
     };
-    // scroll-snap breaks polyfilled smooth scroll :/
-    this.$slidesContainer.style.scrollSnapType = 'none';
+    // scroll-snap breaks polyfilled smooth scroll, but not on safari on chrome :/
+    if (this.options.disableSnapOnScroll) {
+      this.$slidesContainer.style.scrollSnapType = 'none';
+    }
     this._autoScrolling = true;
 
     return scrollIntoView($slide, scrollOptions).then(() => {
-      this.$slidesContainer.style.scrollSnapType = '';
+      if (this.options.disableSnapOnScroll) {
+        this.$slidesContainer.style.scrollSnapType = '';
+      }
       this._autoScrolling = false;
     });
   }
@@ -100,7 +105,7 @@ export class Slider {
     this.observer = new IntersectionObserver((entries) => this._observerCallback(entries, slider), {
       root: slider,
       rootMargin: '-10px',
-      threshold: 0.8,
+      threshold: 1,
     });
     this.$slides.forEach((slide) => this.observer.observe(slide));
   }
