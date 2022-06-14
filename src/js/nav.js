@@ -16,7 +16,9 @@ export class Nav {
     this.$items = this._createItems();
 
     this.goToSection(
-      this.$sections.find(($section) => $section.dataset.path === window.location.pathname),
+      this.$sections.find(
+        ($section) => window.location.pathname === PUBLIC_URL + $section.dataset.path
+      ),
       { duration: 0 }
     ).then(() => {
       this._setupInteractivity();
