@@ -155,8 +155,8 @@ button {
     position: absolute;
     top: 0;
     bottom: 0;
-    left: 0em;
-    right: 0em;
+    left: -55%;
+    right: -55%;
     @include elevation(10);
     opacity: 0;
     transition: opacity 150ms $bezier-out-cubic;
@@ -173,6 +173,14 @@ button {
       transition-delay: 75ms;
       transition-duration: 300ms;
     }
+  }
+}
+
+// Safari section overflow issue :/
+@supports (not (overflow: clip)) {
+  .section-title:before {
+    left: -1em;
+    right: -1em;
   }
 }
 
@@ -232,7 +240,7 @@ a.img-link {
     display: inline;
   }
 
-  &:hover{
+  &:hover {
     transform: scale(1.2);
   }
 }
