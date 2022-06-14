@@ -217,11 +217,22 @@ button {
   @include pattern-stars;
 }
 
-a {
+a:not(.img-link) {
   color: $color-primary;
   transition: color 250ms ease;
   cursor: pointer;
   &:hover {
     color: lighten($color-primary, 20);
+  }
+}
+a.img-link {
+  transform: scale(1);
+  transition: transform 250ms $bezier-out-cubic;
+  img {
+    display: inline;
+  }
+
+  &:hover{
+    transform: scale(1.2);
   }
 }
