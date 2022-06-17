@@ -5,6 +5,7 @@ export const SLIDE_CLASS = 'slide';
 export const CONTROL_CLASS = 'slider-control';
 export const CONTROL_PREV_CLASS = 'prev';
 export const CONTROL_NEXT_CLASS = 'next';
+export const CONTROL_HIDDEN_CLASS = 'hidden';
 
 export class Slider {
   /**
@@ -97,6 +98,21 @@ export class Slider {
     this.controls.$next.addEventListener('click', nextClick);
   }
 
+  _controlsVisibility(slideIndex) {
+    const prevClassList = this.controls.$prev.classList;
+    const nextClassList = this.controls.$next.classList;
+    prevClassList.remove(CONTROL_HIDDEN_CLASS);
+    nextClassList.remove(CONTROL_HIDDEN_CLASS);
+    if (slideIndex === 0) {
+      prevClassList.add(CONTROL_HIDDEN_CLASS);
+      return;
+    }
+    if (slideIndex === this.$slides.length - 1) {
+      nextClassList.add(CONTROL_HIDDEN_CLASS);
+      return;
+    }
+  }
+
   /**
    * @private
    * @param {HTMLElement} slider
@@ -118,8 +134,10 @@ export class Slider {
     const activeSlide = entries.find(({ isIntersecting }) => isIntersecting);
     if (activeSlide) {
       this.$activeSlide = activeSlide.target;
+      const newActiveSlideIndex = this.$slides.indexOf(this.$activeSlide);
+      this._controlsVisibility(newActiveSlideIndex);
       if (!this.options.lsSyncKey) return;
-      localStorage.setItem(this.options.lsSyncKey, this.$slides.indexOf(this.$activeSlide));
+      localStorage.setItem(this.options.lsSyncKey, newActiveSlideIndex);
     }
   }
 

@@ -101,9 +101,8 @@
     cursor: pointer;
 
     @include elevation(10);
-
-    transform: scale(1);
-    transition: transform 300ms $bezier-out-cubic, background 300ms $bezier-out-cubic cub;
+    opacity: 1;
+    transition: opacity 300ms $bezier-out-cubic;
     &:after {
       content: '';
       width: 8px;
@@ -122,6 +121,10 @@
       &:after {
         transform: translateX(-25%) rotate(-135deg);
       }
+    }
+    &.hidden {
+      pointer-events: none;
+      opacity: 0;
     }
   }
 
