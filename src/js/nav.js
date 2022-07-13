@@ -14,6 +14,7 @@ export class Nav {
     this.$nav = document.getElementById(MAIN_ID);
     this.$list = this.$nav.getElementsByTagName('ul')[0];
     this.$items = this._createItems();
+    this.activeItemIndex = 0;
 
     this.goToSection(
       this.$sections.find(
@@ -62,12 +63,15 @@ export class Nav {
       rootMargin: '-40% 0px -60% 0px',
       threshold: 0,
     });
-
     this.$items.forEach(($item) => {
       this.sectionObserver.observe($item.$correspondingSection);
-      $item.addEventListener('click', ({ target }) =>
-        this.goToSection(target.$correspondingSection)
-      );
+    });
+
+    this.$list.addEventListener('click', ({ target }) => {
+      const clickedItemIndex = this.$items.findIndex((item) => item === target) || 0;
+      const indexDifference = Math.abs(this.activeItemIndex - clickedItemIndex);
+      const duration = 450 * indexDifference * 0.8;
+      this.goToSection(target.$correspondingSection, { duration });
     });
   }
 
@@ -120,6 +124,7 @@ export class Nav {
     if (!$item) return;
     $item.classList.add(ACTIVE_CLASS);
     $item.classList.remove(HOVER_CLASS);
+    this.activeItemIndex = this.$items.findIndex((item) => item === $item);
     this._debouncedNavScroll($item);
   }
 
