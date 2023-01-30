@@ -1,4 +1,4 @@
-# [OPEN CV](https;//mclisak.github.io/cv)
+# [OPEN CV](https://mclisak.github.io/cv)
 
 ## Contact
 
