@@ -10,7 +10,9 @@ export class Nav {
   constructor() {
     this.pathMap = {};
     this.basename = window.location.hostname;
-    this.$sections = Array.from(document.body.querySelectorAll('section[name]'));
+    this.$sections = Array.from(
+      document.body.querySelectorAll('section[name]')
+    );
     this.$nav = document.getElementById(MAIN_ID);
     this.$list = this.$nav.getElementsByTagName('ul')[0];
     this.$items = this._createItems();
@@ -18,7 +20,8 @@ export class Nav {
 
     this.goToSection(
       this.$sections.find(
-        ($section) => window.location.pathname === PUBLIC_URL + $section.dataset.path
+        ($section) =>
+          window.location.pathname === PUBLIC_URL + $section.dataset.path
       ),
       { duration: 0 }
     ).then(() => {
@@ -58,17 +61,21 @@ export class Nav {
       });
     }, 300);
 
-    this.sectionObserver = new IntersectionObserver(this._observeSections.bind(this), {
-      root: null,
-      rootMargin: '-40% 0px -60% 0px',
-      threshold: 0,
-    });
+    this.sectionObserver = new IntersectionObserver(
+      this._observeSections.bind(this),
+      {
+        root: null,
+        rootMargin: '-40% 0px -60% 0px',
+        threshold: 0,
+      }
+    );
     this.$items.forEach(($item) => {
       this.sectionObserver.observe($item.$correspondingSection);
     });
 
     this.$list.addEventListener('click', ({ target }) => {
-      const clickedItemIndex = this.$items.findIndex((item) => item === target) || 0;
+      const clickedItemIndex =
+        this.$items.findIndex((item) => item === target) || 0;
       const indexDifference = Math.abs(this.activeItemIndex - clickedItemIndex);
       const duration = 450 * indexDifference * 0.8;
       this.goToSection(target.$correspondingSection, { duration });
@@ -83,7 +90,10 @@ export class Nav {
     const $item = document.createElement('li');
     $item.$correspondingSection = $section;
     $section.$correspondingNavItem = $item;
-    $item.setAttribute('name', ($item.innerText = $section.getAttribute('name')));
+    $item.setAttribute(
+      'name',
+      ($item.innerText = $section.getAttribute('name'))
+    );
     this._addHoverEffect($item);
     this.$list.appendChild($item);
     return $item;

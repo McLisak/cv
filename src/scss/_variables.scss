@@ -1,3 +1,6 @@
+@use 'sass:color';
+@use 'sass:map';
+
 // Colors
 
 $color-bg: #203a44;
@@ -7,14 +10,17 @@ $scrollbar-width: 7px;
 
 // Shadows
 @function pulled-shadow($x, $y) {
-  @return #{$x}px #{$y}px #{$y}px darken($color-bg, 8%),
-    -#{$x * 2}px #{-$y * 2}px #{$y * 3}px lighten($color-bg, 4%),
-    #{$x * 2}px #{$y * 2}px #{$y * 4}px darken($color-bg, 8%);
+  @return #{$x}px #{$y}px #{$y}px color.adjust($color-bg, $lightness: -8%),
+    -#{$x * 2}px #{-$y * 2}px #{$y * 3}px
+      color.adjust($color-bg, $lightness: 4%),
+    #{$x * 2}px #{$y * 2}px #{$y * 4}px color.adjust($color-bg, $lightness: -8%);
 }
 @function pushed-shadow($x, $y) {
-  @return inset #{$x}px #{$y}px #{$y}px darken($color-bg, 8%),
-    inset -#{$x * 2}px #{-$y * 2}px #{$y * 3}px lighten($color-bg, 4%),
-    inset #{$x * 2}px #{$y * 2}px #{$y * 4}px darken($color-bg, 8%);
+  @return inset #{$x}px #{$y}px #{$y}px color.adjust($color-bg, $lightness: -8%),
+    inset -#{$x * 2}px #{-$y * 2}px #{$y * 3}px
+      color.adjust($color-bg, $lightness: 4%),
+    inset #{$x * 2}px #{$y * 2}px #{$y * 4}px
+      color.adjust($color-bg, $lightness: -8%);
 }
 
 $pulled-shadow: pulled-shadow(3, 4);
@@ -41,36 +47,47 @@ $pushed-shadow: pushed-shadow(3, 4);
   }
 }
 
-$inset-shadow: inset 3px 3px 6px rgba(black, 0.4), inset 5px 5px 6px rgba(black, 0.2),
-  inset -3px -3px 6px rgba(black, 0.4), inset -5px -5px 6px rgba(black, 0.2);
+$inset-shadow:
+  inset 3px 3px 6px rgba(black, 0.4),
+  inset 5px 5px 6px rgba(black, 0.2),
+  inset -3px -3px 6px rgba(black, 0.4),
+  inset -5px -5px 6px rgba(black, 0.2);
 @mixin inset-shadow {
   box-shadow: $inset-shadow;
 }
 
-$text-3d-shadow: -0.02em -0.02em 0.02em rgba(whitesmoke, 0.06),
-  -0.04em -0.04em 0.05em rgba(whitesmoke, 0.03), 0.02em 0.02em 0.02em rgba(black, 0.3),
+$text-3d-shadow:
+  -0.02em -0.02em 0.02em rgba(whitesmoke, 0.06),
+  -0.04em -0.04em 0.05em rgba(whitesmoke, 0.03),
+  0.02em 0.02em 0.02em rgba(black, 0.3),
   0.04em 0.04em 0.05em rgba(black, 0.2);
 
 @mixin text-pulled {
-  color: lighten($color-bg, 0.5%);
+  color: color.adjust($color-bg, $lightness: 0.5%);
   text-shadow: $text-3d-shadow;
 }
 
 @mixin text-pushed {
   color: transparent;
-  text-shadow: 0.02em 0.03em 0.015em rgba(whitesmoke, 0.05), 0 0 0 darken($color-bg, 9%);
+  text-shadow:
+    0.02em 0.03em 0.015em rgba(whitesmoke, 0.05),
+    0 0 0 color.adjust($color-bg, $lightness: -9%);
 }
 
 $light-angle: 145deg;
 
-@function lighting-gradient($angle: $light-angle, $color: $color-bg, $power: 1) {
+@function lighting-gradient(
+  $angle: $light-angle,
+  $color: $color-bg,
+  $power: 1
+) {
   @if ($color == 'neutral') {
     $color1: rgba(whitesmoke, 0.04 * $power);
     $color2: rgba(black, 0.1 * $power);
     @return linear-gradient($angle, $color1, transparent 50%, $color2);
   } @else {
-    $color1: lighten($color, 3%);
-    $color2: darken($color, 3%);
+    $color1: color.adjust($color, $lightness: 3%);
+    $color2: color.adjust($color, $lightness: -3%);
     @return linear-gradient($angle, $color1, $color2);
   }
 }
@@ -162,8 +179,9 @@ $ambient-shadow-map: (
 
 // If you don't want all the classes can also just include this mixin and provide an elevation value in any class
 @mixin elevation($elevation) {
-  box-shadow: map-get($key-shadow-umbra-map, $elevation),
-    map-get($key-shadow-penumbra-map, $elevation), map-get($ambient-shadow-map, $elevation);
+  box-shadow: map.get($key-shadow-umbra-map, $elevation),
+    map.get($key-shadow-penumbra-map, $elevation),
+    map.get($ambient-shadow-map, $elevation);
 }
 
 @mixin text-shadow($elevation: 1, $dark-color: rgba(black, 0.6)) {
@@ -172,10 +190,14 @@ $ambient-shadow-map: (
   } @else if $elevation == 1 {
     text-shadow: 0 2px 2px $dark-color;
   } @else if $elevation == 2 {
-    text-shadow: 0 2px 2px $dark-color, 0 3px 5px lighten($dark-color, 20%);
+    text-shadow:
+      0 2px 2px $dark-color,
+      0 3px 5px color.adjust($dark-color, $lightness: 20%);
   } @else if $elevation == 3 {
-    text-shadow: 0 2px 2px $dark-color, 0 3px 5px lighten($dark-color, 10%),
-      0 5px 10px lighten($dark-color, 20%);
+    text-shadow:
+      0 2px 2px $dark-color,
+      0 3px 5px color.adjust($dark-color, $lightness: 10%),
+      0 5px 10px color.adjust($dark-color, $lightness: 20%);
   }
 }
 
@@ -248,18 +270,25 @@ $border-radius: 10px;
     );
 }
 @mixin pattern-upholstery() {
-  background: radial-gradient(
+  background:
+    radial-gradient(
         hsl(197, 36%, 22%) 4%,
         hsl(197, 36%, 13%) 9%,
         hsla(197, 36%, 15%, 0) 9%
       )
       0 0,
-    radial-gradient(hsl(197, 36%, 22%) 4%, hsl(197, 36%, 13%) 8%, hsla(197, 36%, 15%, 0) 10%) 50px
-      50px,
+    radial-gradient(
+        hsl(197, 36%, 22%) 4%,
+        hsl(197, 36%, 13%) 8%,
+        hsla(197, 36%, 15%, 0) 10%
+      )
+      50px 50px,
     radial-gradient(hsla(197, 36%, 25%, 0.8) 20%, hsla(197, 36%, 15%, 0)) 50px 0,
     radial-gradient(hsla(197, 36%, 24%, 0.8) 20%, hsla(197, 36%, 15%, 0)) 0 50px,
-    radial-gradient(hsla(197, 36%, 15%, 1) 35%, hsla(197, 36%, 15%, 0) 60%) 50px 0,
-    radial-gradient(hsla(197, 36%, 15%, 1) 35%, hsla(197, 36%, 15%, 0) 60%) 100px 50px,
+    radial-gradient(hsla(197, 36%, 15%, 1) 35%, hsla(197, 36%, 15%, 0) 60%) 50px
+      0,
+    radial-gradient(hsla(197, 36%, 15%, 1) 35%, hsla(197, 36%, 15%, 0) 60%)
+      100px 50px,
     radial-gradient(hsla(197, 36%, 10%, 0.7), hsla(197, 36%, 15%, 0)) 0 0,
     radial-gradient(hsla(197, 36%, 10%, 0.7), hsla(197, 36%, 15%, 0)) 50px 50px,
     linear-gradient(
@@ -283,8 +312,8 @@ $border-radius: 10px;
   background: repeating-linear-gradient(
     135deg,
     $color,
-    lighten($color, 10%) 10px,
-    darken($color, 10%) 10px,
+    color.adjust($color, $lightness: 10%) 10px,
+    color.adjust($color, $lightness: -10%) 10px,
     $color 30px
   );
   background-color: $color;
@@ -292,15 +321,19 @@ $border-radius: 10px;
 @mixin pattern-flat-panels($color: $color-bg) {
   background: repeating-linear-gradient(
     135deg,
-    darken($color, 8%),
-    darken($color, 8%) 4px,
+    color.adjust($color, $lightness: -8%),
+    color.adjust($color, $lightness: -8%) 4px,
     $color 4px,
     $color 97px
   );
   background-color: $color;
 }
 @mixin pattern-stars($color: $color-bg) {
-  background: radial-gradient($color 75%, darken($color, 10%)) 5px 5px;
+  background: radial-gradient(
+      $color 75%,
+      color.adjust($color, $lightness: -10%)
+    )
+    5px 5px;
   background-size: 15px 15px;
   background-color: $color;
 }
@@ -311,7 +344,7 @@ $breakpoints: (
   l: 991px,
 );
 @mixin screen($size) {
-  @media screen and (min-width: map-get($breakpoints, $size)) {
+  @media screen and (min-width: map.get($breakpoints, $size)) {
     @content;
   }
 }

@@ -1,3 +1,6 @@
+@use "nav";
+@use "variables";
+
 #hi-section {
   $animation-speed: 400ms;
   &-greet {
@@ -12,19 +15,19 @@
   &-name {
     opacity: 0;
     transform: translateY(-3em);
-    animation: appearY $animation-speed $animation-speed * 4 $bezier-out-cubic forwards;
+    animation: appearY $animation-speed $animation-speed * 4 variables.$bezier-out-cubic forwards;
   }
   &-avatar {
     opacity: 0;
     transform: translateY(100%);
-    animation: appearY $animation-speed * 1.2 $animation-speed * 3.5 $bezier-out-cubic forwards;
+    animation: appearY $animation-speed * 1.2 $animation-speed * 3.5 variables.$bezier-out-cubic forwards;
   }
 }
 
 #scroll-reminder {
   position: fixed;
   pointer-events: none;
-  bottom: $nav-height + 10px;
+  bottom: nav.$nav-height + 10px;
   text-align: center;
   opacity: 0;
   transition: opacity 300ms ease;

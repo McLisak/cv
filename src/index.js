@@ -21,7 +21,9 @@ class Page {
 
   _createPortfolio() {
     const $portfolio = document.getElementById('portfolio-slider');
-    const $portfolioLightbox = document.getElementById('portfolio-lightbox-slider');
+    const $portfolioLightbox = document.getElementById(
+      'portfolio-lightbox-slider'
+    );
     renderPortfolio({ container: $portfolio });
     renderPortfolio({ container: $portfolioLightbox, fullDescription: true });
     this.portfolioSlider = new Slider($portfolio, {
@@ -34,14 +36,18 @@ class Page {
     });
     this.portfolioLightbox = new Lightbox({
       container: document.getElementById('portfolio-lightbox'),
-      openButtons: document.querySelectorAll('[data-lightbox="portfolio-lightbox"]'),
+      openButtons: document.querySelectorAll(
+        '[data-lightbox="portfolio-lightbox"]'
+      ),
     });
     this._handlePortfolioLinks();
     this._syncPortfolioSliders();
   }
 
   _handlePortfolioLinks() {
-    const $links = Array.from(document.getElementsByClassName('portfolio-link'));
+    const $links = Array.from(
+      document.getElementsByClassName('portfolio-link')
+    );
     if (!$links.length) return;
     $links.forEach(($link) => {
       $link.addEventListener('click', () => {
@@ -52,7 +58,9 @@ class Page {
             ? this.portfolioSlider
             : this.portfolioLightboxSlider;
         const { $slides } = $slider;
-        const $newActiveSlide = $slides.find(($slide) => $slide.dataset.name === slideName);
+        const $newActiveSlide = $slides.find(
+          ($slide) => $slide.dataset.name === slideName
+        );
         if (!$newActiveSlide) {
           return console.error(
             'Portfolio Link: Whoops! Did not find a matching slide :(',
@@ -80,14 +88,19 @@ class Page {
       const activeSlideIndex = this.portfolioLightboxSlider.$slides.indexOf(
         this.portfolioLightboxSlider.$activeSlide
       );
-      this.portfolioSlider.scrollTo(this.portfolioSlider.$slides[activeSlideIndex], {
-        duration: 1,
-      });
+      this.portfolioSlider.scrollTo(
+        this.portfolioSlider.$slides[activeSlideIndex],
+        {
+          duration: 1,
+        }
+      );
     });
   }
 
   _spySectionTitles() {
-    this.stickyObserver = new StickyObserver(document.getElementsByClassName('section-title'));
+    this.stickyObserver = new StickyObserver(
+      document.getElementsByClassName('section-title')
+    );
     this.stickyObserver.callbacks.push((sticks, element) => {
       window.requestAnimationFrame(() => {
         element.classList[sticks ? 'add' : 'remove']('sticks');

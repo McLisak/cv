@@ -1,3 +1,5 @@
+@use "variables";
+
 /* CONTAINER VARIANTS */
 :root {
   --box-size-default: 300px;
@@ -5,7 +7,7 @@
 .box {
   position: relative;
   display: flex;
-  border-radius: $border-radius;
+  border-radius: variables.$border-radius;
   width: 100%;
   max-width: var(--box-size, var(--box-size-default));
   min-height: var(--box-size, var(--box-size-default));
@@ -16,26 +18,26 @@
 }
 
 .pulled {
-  @include pulled-shadow;
+  @include variables.pulled-shadow;
 }
 
 .pushed {
-  @include pushed-shadow;
+  @include variables.pushed-shadow;
 }
 
 .convex {
-  background: lighting-gradient();
+  background: variables.lighting-gradient();
 }
 
 .concave {
-  background: lighting-gradient(#{$light-angle - 180deg});
+  background: variables.lighting-gradient(#{variables.$light-angle - 180deg});
 }
 
 .text-pulled {
-  @include text-pulled;
+  @include variables.text-pulled;
 }
 .text-pushed {
-  @include text-pushed;
+  @include variables.text-pushed;
 }
 .pushed2pulled {
   &:before,
@@ -45,11 +47,11 @@
   }
   &:before {
     opacity: 0;
-    @include pulled-shadow;
+    @include variables.pulled-shadow;
   }
   &:after {
     opacity: 1;
-    @include pushed-shadow;
+    @include variables.pushed-shadow;
   }
   &.active,
   &:hover {
@@ -69,11 +71,11 @@
   }
   &:before {
     opacity: 1;
-    @include pulled-shadow;
+    @include variables.pulled-shadow;
   }
   &:after {
     opacity: 0;
-    @include pushed-shadow;
+    @include variables.pushed-shadow;
   }
   &.active,
   &:hover {
@@ -97,7 +99,7 @@
   z-index: 1;
   border: 20px solid var(--color-bg);
   position: relative;
-  @include frame-shadow;
+  @include variables.frame-shadow;
 }
 
 /* END CONTAINER VARIANTS */

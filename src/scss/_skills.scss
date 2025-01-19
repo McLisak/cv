@@ -1,3 +1,7 @@
+@use "variables";
+
+@use 'sass:color';
+
 .skills {
   --size: 130px;
   display: grid;
@@ -10,34 +14,39 @@
     'js js'
     'css css'
     'ts scss'
-    'ts vue'
-    'rct vue'
-    'rct njs'
-    'gha gql'
-    'wbp wbp'
-    'prcl aws'
+    'ts rct'
+    'pwr rct'
+    'pwr zstd'
+    'gha gha'
+    'vite vitest'
+    'mui njs'
+    'ng njs'
+    'trp vue'
+    'wbp prcl'
+    'gql aws'
     'ima gam'
     'vast gpt';
   grid-gap: 1em;
   grid-auto-flow: dense;
   justify-content: center;
 }
+
 .skill {
   position: relative;
   font-weight: 700;
   font-size: calc(var(--size) / 3);
-  @include elevation(12);
+  @include variables.elevation(12);
 
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 15px 20px;
   line-height: 1.1;
-  border-radius: $border-radius;
+  border-radius: variables.$border-radius;
   &:after {
     letter-spacing: -1px;
     font-size: 100%;
-    @include text-shadow(2);
+    @include variables.text-shadow(2);
     text-align: center;
   }
   &-mini {
@@ -46,7 +55,7 @@
     height: var(--size);
     margin: 0.25rem;
     padding: 0;
-    @include elevation(2);
+    @include variables.elevation(2);
     justify-content: center;
     align-items: center;
     &:after {
@@ -55,7 +64,11 @@
   }
 
   &-js {
-    background: linear-gradient($light-angle, hsl(60, 86%, 55%), hsl(60, 93%, 30%));
+    background: linear-gradient(
+      variables.$light-angle,
+      hsl(60, 86%, 55%),
+      hsl(60, 93%, 30%)
+    );
     grid-area: js;
     &:after {
       content: 'JS';
@@ -63,21 +76,33 @@
   }
   &-ts {
     grid-area: ts;
-    background: linear-gradient($light-angle, hsl(215, 60%, 44%), hsl(215, 60%, 22%));
+    background: linear-gradient(
+      variables.$light-angle,
+      hsl(215, 60%, 44%),
+      hsl(215, 60%, 22%)
+    );
     &:after {
       content: 'TS';
     }
   }
   &-css {
     grid-area: css;
-    background: linear-gradient($light-angle, hsl(192, 86%, 47%), hsl(192, 86%, 27%));
+    background: linear-gradient(
+      variables.$light-angle,
+      hsl(192, 86%, 47%),
+      hsl(192, 86%, 27%)
+    );
     &:after {
       content: 'CSS';
     }
   }
   &-scss {
     grid-area: scss;
-    background: linear-gradient($light-angle, hsl(330, 86%, 47%), hsl(330, 86%, 27%));
+    background: linear-gradient(
+      variables.$light-angle,
+      hsl(330, 86%, 47%),
+      hsl(330, 86%, 27%)
+    );
     &:after {
       font-size: 80%;
       content: 'SCSS';
@@ -85,7 +110,11 @@
   }
   &-webpack {
     grid-area: wbp;
-    background: linear-gradient($light-angle, hsl(206, 68%, 43%), hsl(206, 68%, 20%));
+    background: linear-gradient(
+      variables.$light-angle,
+      hsl(206, 68%, 43%),
+      hsl(206, 68%, 20%)
+    );
     &:after {
       font-size: 50%;
       content: 'webpack';
@@ -93,7 +122,11 @@
   }
   &-parcel {
     grid-area: prcl;
-    background: linear-gradient($light-angle, hsl(206, 68%, 43%), hsl(206, 68%, 27%));
+    background: linear-gradient(
+      variables.$light-angle,
+      hsl(206, 68%, 43%),
+      hsl(206, 68%, 27%)
+    );
     &:after {
       font-size: 55%;
       content: 'parcel';
@@ -101,7 +134,11 @@
   }
   &-nodejs {
     grid-area: njs;
-    background: linear-gradient($light-angle, hsl(112, 34%, 55%), hsl(112, 34%, 33%));
+    background: linear-gradient(
+      variables.$light-angle,
+      hsl(112, 34%, 55%),
+      hsl(112, 34%, 33%)
+    );
     &:after {
       font-size: 60%;
       content: 'node.js';
@@ -109,7 +146,11 @@
   }
   &-react {
     grid-area: rct;
-    background: linear-gradient($light-angle, hsl(193, 95%, 68%), hsl(193, 50%, 35%));
+    background: linear-gradient(
+      variables.$light-angle,
+      hsl(193, 95%, 68%),
+      hsl(193, 50%, 35%)
+    );
     &:after {
       font-size: 65%;
       content: 'react';
@@ -120,7 +161,7 @@
     $vue-bg: #35495d;
     $vue-slate: #35495d;
     $vue-green: #41b883;
-    background: lighting-gradient($light-angle, 'neutral', 5),
+    background: variables.lighting-gradient(variables.$light-angle, 'neutral', 5),
       linear-gradient(
         135deg,
         $vue-slate,
@@ -135,7 +176,7 @@
   }
   &-gpt {
     grid-area: gpt;
-    background: lighting-gradient($light-angle, 'neutral', 5),
+    background: variables.lighting-gradient(variables.$light-angle, 'neutral', 5),
       linear-gradient(
         135deg,
         hsl(217, 88%, 60%),
@@ -153,7 +194,7 @@
   }
   &-gam {
     grid-area: gam;
-    background: lighting-gradient($light-angle, 'neutral', 5),
+    background: variables.lighting-gradient(variables.$light-angle, 'neutral', 5),
       linear-gradient(
         135deg,
         hsl(217, 88%, 60%),
@@ -171,7 +212,7 @@
   }
   &-ima {
     grid-area: ima;
-    background: lighting-gradient($light-angle, 'neutral', 5),
+    background: variables.lighting-gradient(variables.$light-angle, 'neutral', 5),
       linear-gradient(
         135deg,
         hsl(217, 88%, 60%),
@@ -189,7 +230,11 @@
   }
   &-vast {
     grid-area: vast;
-    background: linear-gradient($light-angle, hsl(4, 86%, 40%), hsl(4, 80%, 20%));
+    background: linear-gradient(
+      variables.$light-angle,
+      hsl(4, 86%, 40%),
+      hsl(4, 80%, 20%)
+    );
     &:after {
       font-size: 55%;
       content: 'VAST & VPAID';
@@ -197,7 +242,11 @@
   }
   &-aws {
     grid-area: aws;
-    background: linear-gradient($light-angle, hsl(35, 94%, 58%), hsl(35, 80%, 33%));
+    background: linear-gradient(
+      variables.$light-angle,
+      hsl(35, 94%, 58%),
+      hsl(35, 80%, 33%)
+    );
     &:after {
       font-size: 90%;
       content: 'AWS';
@@ -205,50 +254,151 @@
   }
   &-gha {
     grid-area: gha;
-    background: linear-gradient($light-angle, #db469f, #2188ff);
+    background: linear-gradient(variables.$light-angle, #db469f, #2188ff);
     &::after {
       content: 'GHA';
     }
   }
   &-gql {
     grid-area: gql;
-    background: linear-gradient($light-angle, lighten(#e00098, 10), darken(#e00098, 10));
+    background: linear-gradient(
+      variables.$light-angle,
+      color.adjust(#e00098, $lightness: 10%),
+      color.adjust(#e00098, $lightness: -10%)
+    );
     &::after {
       content: 'GQL';
     }
   }
+  &-mui {
+    grid-area: mui;
+    background: linear-gradient(
+      variables.$light-angle,
+      color.adjust(#2a63c2, $lightness: 10%),
+      color.adjust(#2a63c2, $lightness: -10%)
+    );
+    &::after {
+      content: 'MUI';
+    }
+  }
+  &-vitest {
+    grid-area: vitest;
+    $vitest-start: #7b9a36;
+    $vitest-end: #5f7130;
+    $vitest-accent: #f4c950;
+    background: linear-gradient(
+      135deg,
+      $vitest-start,
+      $vitest-start 40%,
+      $vitest-accent 40%,
+      $vitest-accent 60%,
+      $vitest-end 60%
+    );
+    &::after {
+      font-size: 75%;
+      content: 'vitest';
+    }
+  }
+  &-vite {
+    grid-area: vite;
+    $vite-start: #73c4fa;
+    $vite-end: #ae3ff5;
+    $vite-accent: #f6c24a;
+    background: linear-gradient(
+        135deg,
+        transparent,
+        transparent 40%,
+        $vite-accent 40%,
+        $vite-accent 60%,
+        transparent 60%
+      ),
+      linear-gradient(variables.$light-angle, $vite-start, $vite-end);
+
+    &::after {
+      content: 'vite';
+    }
+  }
+  &-playwright {
+    grid-area: pwr;
+    background: linear-gradient(variables.$light-angle, #448b34 50%, #c75c4e 50%);
+    &::after {
+      font-size: 45%;
+      content: 'playwright';
+    }
+  }
+  &-turborepo {
+    grid-area: trp;
+    background: linear-gradient(variables.$light-angle, #88151f, #00418c);
+    &::after {
+      font-size: 50%;
+      content: 'turborepo';
+    }
+  }
+  &-zustand {
+    grid-area: zstd;
+    background: linear-gradient(
+      variables.$light-angle,
+      #423e39,
+      #423e39 33%,
+      #e57441 33%,
+      #e57441 45%,
+      #f3b33e 45%,
+      #f3b33e 55%,
+      #e57441 55%,
+      #e57441 66%,
+      #423e39 66%,
+      #423e39
+    );
+    &::after {
+      font-size: 50%;
+      content: 'zustand';
+    }
+  }
+  &-angular {
+    grid-area: ng;
+    background: linear-gradient(variables.$light-angle, #e847be 25%, #e13350 75%);
+    &::after {
+      font-size: 50%;
+      content: 'angular';
+    }
+  }
 }
 
-@include screen(s) {
+@include variables.screen(s) {
   .skills {
     --col: 3;
     grid-template-areas:
       'js js ts'
       'js js ts'
       'scss css css'
-      'vue njs prcl'
-      'vue gql rct'
-      'wbp wbp rct'
-      'aws gha vast'
+      'rct zstd vite'
+      'rct zstd vitest'
+      'gha gha ng'
+      'vue pwr pwr'
+      'njs njs trp'
+      'gql prcl mui'
+      'aws wbp vast'
       'ima gpt gam';
   }
 }
 
-@include screen(m) {
+@include variables.screen(m) {
   .skills {
     --size: 160px;
     --col: 4;
     grid-template-areas:
       'js js css scss'
-      'js js css vue'
+      'js js css ng'
       'rct ts ts vue'
-      'rct gha wbp wbp'
-      'prcl njs gpt gam'
-      'aws gql vast ima';
+      'rct zstd gha gha'
+      'njs zstd vite vitest'
+      'pwr pwr trp mui'
+      'wbp gql gpt gam'
+      'prcl aws vast ima';
   }
 }
 
-@include screen(l) {
+@include variables.screen(l) {
   .skills {
     --size: 190px;
   }

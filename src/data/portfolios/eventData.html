@@ -1,0 +1,48 @@
+<p>An application for fast and detailed soccer event data collection.</p>
+<p>
+  Based on REST and Websocket, meant for real time data production and
+  consumption.
+</p>
+<p>
+  Snappy React client, heavily relying on quick hotkey input. Users, based on
+  their roles, have access to different views. Scorers are assigned to
+  particular teams, they can view and edit team lineups at any point during the
+  game and they can view the main pitch view, the heart of the app. Supervisors
+  have their own dedicated view in which they can see and edit both teams
+  lineups, view and quickly edit actions delivered by scorers of both teams. A 2
+  or 3-person setup is required for each match and all of them have their data
+  and their current views synced in real time. Each user can 'travel in time',
+  they can edit their current in-game clock time, so each user have its own
+  current state, which has to reflect what actually happened until that.
+</p>
+<p>
+  While in pitch view, collector user has a big interactive pitch with a stream
+  overlay. While looking at the stream, a collector tracks ball positions and
+  whenever any action happens, they have to quickly produce that action. This
+  means quickly selecting a player who performed an action, quickly selecting a
+  type of action and selecting the destination position - if action had
+  destination - or quickly providing additional data for given action. Besides
+  that, collectors are presented all actions they created, so they can quickly
+  see most important information about each action and if it got delivered to
+  the system properly. Collectors can also edit or fulfill additional action
+  data at any point during the game. Pitch view UX has a lot in common with
+  video games. Especially seeing how experienced collectors are using it.
+</p>
+<p>
+  A supervisor sees a smaller pitch, video stream, both teams current
+  lineups and a table of actions delivered to the system. This part of the app
+  allows for tracking 'current' state of the game and in case of any mistake,
+  supervisor can add or edit any action for either team. This obviously
+  affects whats presented to other users, but real time data sync with game
+  state control mechanism is keeping all clients presentations and data
+  correctness in place.
+</p>
+<p>
+  This project followed a shift-left approach. A solid CI pipelines were
+  created ahead of app development. Unit, integration and e2e tests were
+  delivered together with every feature and bugfix. This investment not only
+  saved so much time as the app evolved, but it also allowed to discover
+  problems impossible to reproduce by dev team, problems that could only happen
+  during several simultaneously ongoing games. All of that without a risk of
+  these problems actually happening in meaningful time.
+</p>

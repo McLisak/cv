@@ -1,8 +1,11 @@
 const fs = require('fs');
 const path = require('path');
 
-const distPath = path.resolve(__dirname, '../dist');
+const distPath = path.resolve(__dirname, '../dist/cv');
 const indexHtml = 'index.html';
 const notFoundHtml = '404.html';
 
-fs.copyFileSync(path.join(distPath, indexHtml), path.join(distPath, notFoundHtml));
+fs.copyFileSync(
+  path.join(distPath, indexHtml),
+  path.join(distPath, notFoundHtml)
+);

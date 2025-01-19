@@ -1,3 +1,5 @@
+@use "variables";
+
 .timeline {
   text-align: left;
   max-width: 800px;
@@ -47,8 +49,8 @@
       left: 0;
       bottom: calc(100% - 3em);
       font-size: 0.75em;
-      background: $color-bg;
-      @include elevation(4);
+      background: variables.$color-bg;
+      @include variables.elevation(4);
     }
 
   }

@@ -1,3 +1,5 @@
+@use "variables";
+
 .slider {
   position: relative;
   max-width: 800px;
@@ -69,8 +71,8 @@
     white-space: normal;
     margin: 0 2%;
     padding: 0.5em 1em;
-    border-radius: $border-radius;
-    @include elevation(8);
+    border-radius: variables.$border-radius;
+    @include variables.elevation(8);
 
     &-content-container {
       display: flex;
@@ -100,9 +102,9 @@
     background: var(--color-bg);
     cursor: pointer;
 
-    @include elevation(10);
+    @include variables.elevation(10);
     opacity: 1;
-    transition: opacity 300ms $bezier-out-cubic;
+    transition: opacity 300ms variables.$bezier-out-cubic;
     &:after {
       content: '';
       width: 8px;

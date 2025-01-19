@@ -1,6 +1,10 @@
+@use "variables";
+
+@use 'sass:color';
+
 :root {
-  --color-bg: #{$color-bg};
-  --color-primary: #{$color-primary};
+  --color-bg: #{variables.$color-bg};
+  --color-primary: #{variables.$color-primary};
 }
 
 * {
@@ -8,13 +12,13 @@
 }
 
 ::-webkit-scrollbar {
-  width: $scrollbar-width;
-  height: $scrollbar-width;
+  width: variables.$scrollbar-width;
+  height: variables.$scrollbar-width;
 }
 ::-webkit-scrollbar-thumb {
-  width: $scrollbar-width;
-  background: $color-scrollbar;
-  border-radius: $border-radius;
+  width: variables.$scrollbar-width;
+  background: variables.$color-scrollbar;
+  border-radius: variables.$border-radius;
 }
 ::-webkit-scrollbar-track {
   background: transparent;
@@ -22,7 +26,7 @@
 
 html {
   font-size: 14px;
-  scrollbar-color: $color-scrollbar transparent;
+  scrollbar-color: variables.$color-scrollbar transparent;
   scrollbar-width: thin;
 }
 
@@ -33,7 +37,7 @@ body {
   background: var(--color-bg);
   position: relative;
   line-height: 1.1;
-  @include text-shadow(1);
+  @include variables.text-shadow(1);
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -51,7 +55,7 @@ section {
   align-items: center;
   overflow-x: clip;
   &:not(:first-of-type) {
-    border-top: 1px solid lighten($color: $color-bg, $amount: 7);
+    border-top: 1px solid color.adjust($color: variables.$color-bg, $lightness: 7%);
   }
 }
 img {
@@ -113,9 +117,9 @@ p {
 
 button {
   background: var(--color-bg);
-  @include pulled-shadow;
+  @include variables.pulled-shadow;
   border: none;
-  border-radius: $border-radius;
+  border-radius: variables.$border-radius;
   padding: 1em;
   font-size: 0.95rem;
   cursor: pointer;
@@ -124,7 +128,7 @@ button {
   margin: 1em 0.5em;
   text-transform: uppercase;
   transform-origin: center;
-  transition: transform 125ms $bezier-out-cubic;
+  transition: transform 125ms variables.$bezier-out-cubic;
   &:focus {
     transform: scale(1.05);
     color: var(--color-primary);
@@ -135,7 +139,7 @@ button {
 // This creates the classes for each elevation dp with numbers from 1 to 24
 @for $elevation from 1 through 24 {
   .elevation-#{$elevation} {
-    @include elevation($elevation);
+    @include variables.elevation($elevation);
   }
 }
 
@@ -146,7 +150,7 @@ button {
   align-items: center;
   justify-content: center;
   z-index: 2;
-  transition: transform 250ms $bezier-out-cubic;
+  transition: transform 250ms variables.$bezier-out-cubic;
   transition-delay: 75ms;
   transform: scale(1);
   transform-origin: top center;
@@ -157,12 +161,12 @@ button {
     bottom: 0;
     left: -55%;
     right: -55%;
-    @include elevation(10);
+    @include variables.elevation(10);
     opacity: 0;
-    transition: opacity 150ms $bezier-out-cubic;
+    transition: opacity 150ms variables.$bezier-out-cubic;
     transition-delay: 0ms;
     background: var(--color-bg);
-    border-radius: 0 0 $border-radius $border-radius;
+    border-radius: 0 0 variables.$border-radius variables.$border-radius;
     z-index: -1;
   }
   &.sticks {
@@ -184,17 +188,17 @@ button {
   }
 }
 
-@include screen(s) {
+@include variables.screen(s) {
   html {
     font-size: 15px;
   }
 }
-@include screen(m) {
+@include variables.screen(m) {
   html {
     font-size: 16px;
   }
 }
-@include screen(l) {
+@include variables.screen(l) {
   html {
     font-size: 18px;
   }
@@ -202,40 +206,40 @@ button {
 
 // background patterns
 .pattern-scotch {
-  @include pattern-scotch;
+  @include variables.pattern-scotch;
 }
 .pattern-scotch-blurred {
   &:before {
     @extend %pseudo-cover;
-    @include pattern-scotch;
+    @include variables.pattern-scotch;
     z-index: -1;
     filter: blur(2px);
   }
 }
 .pattern-upholstery {
-  @include pattern-upholstery;
+  @include variables.pattern-upholstery;
 }
 .pattern-scallop {
-  @include pattern-scallop;
+  @include variables.pattern-scallop;
 }
 .pattern-flat-panels {
-  @include pattern-flat-panels;
+  @include variables.pattern-flat-panels;
 }
 .pattern-stars {
-  @include pattern-stars;
+  @include variables.pattern-stars;
 }
 
 a:not(.img-link) {
-  color: $color-primary;
+  color: variables.$color-primary;
   transition: color 250ms ease;
   cursor: pointer;
   &:hover {
-    color: lighten($color-primary, 20);
+    color: color.adjust(variables.$color-primary, $lightness: 20%);
   }
 }
 a.img-link {
   transform: scale(1);
-  transition: transform 250ms $bezier-out-cubic;
+  transition: transform 250ms variables.$bezier-out-cubic;
   img {
     display: inline;
   }
